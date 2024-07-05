@@ -1,0 +1,73 @@
+
+/* Estilos para el footer */
+.container {
+  max-width: 960px; /* Ajusta el ancho máximo según tus necesidades */
+  margin: 0 auto; /* Centra el contenido */
+}
+
+footer {
+  background-color: #f8f9fa; /* Color de fondo */
+  padding: 15px 20px; /* Espaciado interno */
+  border-top: 1px solid #dee2e6; /* Borde superior */
+ 
+    width: 100%;
+    bottom: 0;
+    position: relative;
+    z-index: 1000;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #f8f9fa; /* Color de fondo */
+        padding: 15px 20px; /* espaciado interno */
+        border-top: 1px solid #dee2e6; /* Borde superior */
+      
+      
+}
+
+footer a {
+  color: #6c757d; /* Color del texto para los enlaces */
+  text-decoration: none; /* Sin subrayado en los enlaces */
+}
+
+footer a:hover {
+  color: #495057; /* Color del texto al pasar el ratón por encima */
+}
+
+footer .bi {
+  vertical-align: middle; /* Alineación vertical */
+}
+
+/* Estilos para el logotipo */
+footer .logo {
+  font-size: 24px; /* Tamaño de la fuente */
+  font-weight: bold; /* Negrita */
+}
+
+/* Estilos para los iconos sociales */
+footer .social-icons {
+  margin: 0;
+  padding: 0;
+  list-style-type: none; /* Elimina los puntos de lista */
+}
+
+footer .social-icons li {
+  display: inline-block; /* Muestra los íconos en línea */
+  margin-left: 10px; /* Espaciado entre los íconos */
+}
+
+footer .social-icons li:first-child {
+  margin-left: 0; /* Sin margen izquierdo para el primer ícono */
+}
+
+/* Media query para dispositivos pequeños */
+@media (max-width: 768px) {
+  footer .col-md-4 {
+    text-align: center; /* Centra el contenido en dispositivos pequeños */
+    margin-bottom: 10px; /* Espacio inferior */
+  }
+  
+  footer .nav {
+    justify-content: center; /* Centra los íconos sociales en dispositivos pequeños */
+  }
+}

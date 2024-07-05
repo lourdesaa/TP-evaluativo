@@ -11,6 +11,10 @@ import {AngularFireAuthModule} from '@angular/fire/compat/auth'
 import {AngularFireStorageModule} from '@angular/fire/compat/storage'
 import { SharedModule } from './modules/shared/shared.module';
 
+//angular material
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -23,6 +27,8 @@ import { SharedModule } from './modules/shared/shared.module';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFireStorageModule,
+    MatToolbarModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
