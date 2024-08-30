@@ -20,7 +20,8 @@ export class CardComponent {
         imagen: "https://ar.todomoda.com/media/catalog/product/7/6/76234303_1_1_20240523180645.jpg?quality=75&bg-color=255,255,255&fit=bounds&height=841&width=657&canvas=657:841",
         alt: "LabialRoller",
         categoria: "Labiales",
-        tipo: "Brillo labial"
+        tipo: "Brillo labial",
+        imagen2:"https://ar.todomoda.com/media/catalog/product/7/6/76234303_0_1_20240523180645.jpg?quality=75&bg-color=255,255,255&fit=bounds&height=841&width=657&canvas=657:841"
       },
       {
         id: "",
@@ -29,7 +30,9 @@ export class CardComponent {
         imagen: "https://ar.todomoda.com/media/catalog/product/7/6/76291401_0_1_20220830180825.jpg?quality=75&bg-color=255,255,255&fit=bounds&height=841&width=657&canvas=657:841",
         alt: "GlossObsessed",
         categoria: "Labiales",
-        tipo: "Brillo labial"
+        tipo: "Brillo labial",
+        imagen2:"https://ar.todomoda.com/media/catalog/product/7/6/76291401_1_1_20220830180825.jpg?quality=75&bg-color=255,255,255&fit=bounds&height=841&width=657&canvas=657:841",
+
       },
       {
         id: "",
@@ -38,7 +41,9 @@ export class CardComponent {
         imagen: "https://ar.todomoda.com/media/catalog/product/7/6/76197501_1_1_20240523180645.jpg?quality=75&bg-color=255,255,255&fit=bounds&height=841&width=657&canvas=657:841",
         alt: "BalsamoBerry",
         categoria: "Labiales",
-        tipo: "Balsamo labial"
+        tipo: "Balsamo labial",
+        imagen2:"",
+
       },
       // {
       //   id: "",
