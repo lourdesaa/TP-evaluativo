@@ -1,8 +1,17 @@
-<mat-toolbar>
+<!-- <mat-toolbar>
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button>
     <span>Maquillaje piola</span>
+
+    <button id="menuProducto" mat-button [matMenuTriggerFor]="producto">Maquillaje</button>
+    <mat-menu #producto="matMenu">
+        <button mat-menu-item routerLink="/labiales">Labiales</button>
+        <button mat-menu-item routerLink="/ojos">Ojos</button>
+        <button mat-menu-item routerLink="/rostro">Rostro</button>
+        <button mat-menu-item routerLink="/unas">Uñas</button>
+    </mat-menu>
+
     <span class="example-spacer"></span>
     <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
       <mat-icon>favorite</mat-icon>
@@ -10,5 +19,39 @@
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
       <mat-icon>share</mat-icon>
     </button>
-  </mat-toolbar>
+  </mat-toolbar>  -->
   
+  <mat-toolbar>
+    <button id="menuSecciones" mat-icon-button class="example-icon" [matMenuTriggerFor]="secciones">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #secciones="matMenu">
+      <button mat-menu-item routerLink="/inicio">Inicio</button>
+      <button mat-menu-item [matMenuTriggerFor]="producto">Maquillaje</button>
+    </mat-menu>
+
+    <span>Maquillaje chido</span>
+    <button id="menuInicio" mat-button routerLink="/inicio">Inicio</button>
+
+    <button id="menuProducto" mat-button [matMenuTriggerFor]="producto">Maquillaje</button>
+    <mat-menu #producto="matMenu">
+        <button mat-menu-item routerLink="/labiales">Labiales</button>
+        <button mat-menu-item routerLink="/ojos">Ojos</button>
+        <button mat-menu-item routerLink="/rostro">Rostro</button>
+        <button mat-menu-item routerLink="/uñas">Uñas</button>
+    </mat-menu>
+
+    <span class="example-spacer"></span>
+
+    <button mat-icon-button [matMenuTriggerFor]="usuario"><mat-icon>person</mat-icon></button>
+    <mat-menu #usuario="matMenu">
+        <button mat-menu-item *ngIf="logueado" (click)="iniciar()" routerLink="/registro">Registrarse</button>
+        <button mat-menu-item *ngIf="logueado" (click)="iniciar()" routerLink="/inicio-sesion">Iniciar sesión</button>
+        <button mat-menu-item *ngIf="deslogueado" (click)="cerrarSesion()">Cerrar sesion</button>
+    </mat-menu>
+
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+</mat-toolbar>
+

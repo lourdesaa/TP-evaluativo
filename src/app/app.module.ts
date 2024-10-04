@@ -5,15 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { environment } from 'src/environments/environment';
-import {AngularFireModule} from '@angular/fire/compat'
-import {AngularFireAuthModule} from '@angular/fire/compat/auth'
-import {AngularFireStorageModule} from '@angular/fire/compat/storage'
-import { SharedModule } from './modules/shared/shared.module';
+// COMPONENTES GLOBALES
 
-//angular material
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
+// VINCULACIONES/ IMPORTACIONES CON FIREBASE
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire/compat'; // Es para el Cloud Firestore
+import { AngularFireAuthModule } from '@angular/fire/compat/auth'; // Es para la Autentificación
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { SharedModule } from './modules/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -26,9 +25,7 @@ import {MatIconModule} from '@angular/material/icon';
     SharedModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
-    AngularFireStorageModule,
-    MatToolbarModule,
-    MatIconModule,
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
