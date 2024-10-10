@@ -16,7 +16,7 @@ import { CardLabialesComponent } from './component/card-labiales/card-labiales.c
 import { CardRostroComponent } from './component/card-rostro/card-rostro.component';
 import { CardOjosComponent } from './component/card-ojos/card-ojos.component';
 import { CardUnasComponent } from './component/card-unas/card-unas.component';
-import { CardComponent } from './component/card/card.component';
+import { CardComponent } from '../inicio/components/card/card.component';
 
 @NgModule({
   declarations: [
