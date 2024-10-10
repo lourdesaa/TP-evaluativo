@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/modules/autentificacion/service/auth.service';
 import { Router } from '@angular/router';
-import { lastValueFrom } from 'rxjs';
-
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',

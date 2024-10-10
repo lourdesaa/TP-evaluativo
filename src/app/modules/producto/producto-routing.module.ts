@@ -21,7 +21,7 @@ const routes: Routes = [
     path:"ojos",component:OjosComponent
   },
   {
-    path:"uñas",component:UnasComponent
+    path:"unas",component:UnasComponent
   }
 ];
 
