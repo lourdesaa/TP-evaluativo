@@ -27,11 +27,10 @@
     </button>
     <mat-menu #secciones="matMenu">
       <button mat-menu-item routerLink="/inicio">Inicio</button>
-      <button mat-menu-item [matMenuTriggerFor]="producto">Maquillaje</button>
+      <button mat-menu-item [matMenuTriggerFor]="producto" class="nombres">Maquillaje</button>
     </mat-menu>
 
-    <span>Maquillaje chido</span>
-    <button id="menuInicio" mat-button routerLink="/inicio">Inicio</button>
+    <button class="lightneat" id="menuInicio" mat-button routerLink="/inicio">Light Neat</button>
 
     <button id="menuProducto" mat-button [matMenuTriggerFor]="producto">Maquillaje</button>
     <mat-menu #producto="matMenu">

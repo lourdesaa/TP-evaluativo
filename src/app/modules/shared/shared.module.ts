@@ -10,6 +10,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
+import { CardComponent } from '../inicio/components/card/card.component';
+import { MatCardModule } from '@angular/material/card';
 
 // RUTAS GENERALES DE TODOS LOS MÓDULOS
 import { AppRoutingModule } from 'src/app/app-routing.module';
@@ -25,7 +27,8 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCardModule
   ],
   exports: [
     NavbarComponent,
@@ -33,7 +36,8 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCardModule
   ]
 })
 export class SharedModule { }
