@@ -1,11 +1,10 @@
 <div class="container">
     <div class="row">
-        <h1>Productos</h1>
-
+        <h1>Labiales</h1>
         <div id="carouselExample" class="carousel slide">
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src="https://i0.wp.com/www.septimacaja.com/wp-content/uploads/Mario_banner.jpg?fit=1400%2C788&ssl=1" class="d-block w-100" alt="...">
+                <img src="https://ar.todomoda.com/media/wysiwyg/TMB_SLIDER_-_hyper_aura_01_desktop_.jpg" class="d-block w-100" alt="...">
               </div>
               <div class="carousel-item" *ngFor="let producto of productoCarrusel">
                 <img src="{{producto.imagen}}" class="d-block w-100" alt="{{producto.alt}}">
@@ -21,7 +20,6 @@
               <span class="visually-hidden">Next</span>
             </button>
           </div>
-
         <div class="col">
             <app-card
             (productoAgregado)="productoAnadido($event)"(productoReciente)="product"></app-card>

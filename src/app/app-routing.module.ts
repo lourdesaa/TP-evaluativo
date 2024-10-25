@@ -7,10 +7,6 @@ const routes: Routes = [
   {
     path:"",component:InicioComponent
   },
-  // Carga perezosa -> 1 módulo
-  // loadChildren: indica una ruta hija
-  // ()=>import: ruta de dónde viene el módulo
-  // .then: promesa/ función asincronica
   {
     path:"",loadChildren:()=>import('./modules/inicio/inicio.module').then(m=>m.InicioModule)
   },
