@@ -20,7 +20,11 @@ const routes: Routes = [
   {
     path: "", loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
   },
+  {
+    path:"",loadChildren:()=> import('./modules/carrito/carrito.module').then(m => m.CarritoModule)
+  }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -1,4 +1,28 @@
+.d-block{
+    height: 450px;
+}
+
 .col-lg-12{
     justify-content: center;
     display: flex;
+}
+.col-lg-4{
+    justify-content: center;
+    display: flex;
+}
+/* Tarjetas */
+.card{
+    width: 18rem;
+}
+
+.card-img-top{
+    width: 100%;
+}
+
+.modal-header{
+    justify-content: center;
+}
+
+.modal-footer{
+    justify-content: center;
 }

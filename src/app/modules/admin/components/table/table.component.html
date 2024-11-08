@@ -1,13 +1,14 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">Imagen</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Precio</th>
-            <th scope="col">descripcion</th>
-            <th scope="col">Categoria</th>
-            <th scope="col">Acciones</th>
+            <th class="tabla-titulo" scope="col">#</th>
+            <th class="tabla-titulo" scope="col">Imagen</th>
+            <th class="tabla-titulo" scope="col">Nombre</th>
+            <th class="tabla-titulo" scope="col">Precio</th>
+            <th class="tabla-titulo" scope="col">descripcion</th>
+            <th class="tabla-titulo" scope="col">Categoria</th>
+            <th class="tabla-titulo" scope="col">Stock</th>
+            <th class="tabla-titulo" scope="col">Acciones</th>
         </tr>
     </thead>
 
@@ -17,12 +18,11 @@
             <td>
                 <img src="{{producto.imagen}}" alt="{{producto.alt}}" width="100px">
             </td>
-
             <td>{{producto.nombre}}</td>
             <td>{{producto.precio}}</td>
             <td>{{producto.descripcion}}</td>
             <td>{{producto.categoria}}</td>
-
+            <td>{{producto.stock}}</td>
 
             <!-- ACCIONES -->
             <!-- EDITAR -->
@@ -41,7 +41,6 @@
             </td>
         </tr>
     </tbody>
-
 </table>
 
 <!-- Boton para agregar productos -->
@@ -96,6 +95,12 @@
                     <input class="form-control" type="text" formControlName="alt"
                         placeholder="Ingrese un texto alternativo">
                 </div>
+
+                <div class="mb-3">
+                    <label class="form-label"> Ingrese stock de su producto:</label>
+                    <input class="form-control" type="number" formControlName="stock">
+                </div>
+
             </div>
 
             <!--ACCIONES DEL MODAL-->
@@ -159,18 +164,23 @@
                     <label class="form-label">Ingrese un texto alternativo</label>
                     <input class="form-control" type="text" formControlName="alt" placeholder="{{productosEdit.alt}}">
                 </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Ingrese stock del producto</label>
+                    <input class="form-control" type="number" formControlName="stock"
+                        placeholder="{{productosEdit.stock}}">
+                </div>
             </div>
 
             <!--ACCIONES DEL MODAL-->
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal"
                     (click)="editarProducto()">Guardar</button>
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrrar</button>
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>
 </div>
-
 
 
 <!-- Modal -->
@@ -180,17 +190,17 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Esta seguro de eliminar el producto</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body modal-nombre">
                 {{productoSeleccionado.nombre}}
                 <img src="{{productoSeleccionado.imagen}}" alt="{{productoSeleccionado.alt}}">
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                    aria-label="Cerrar">Cerrar</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                     (click)="borrarProducto()">Borrar</button>
-                <mat-icon>delete</mat-icon>
             </div>
         </div>
     </div>

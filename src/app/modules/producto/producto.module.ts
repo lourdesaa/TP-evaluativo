@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatTabsModule } from '@angular/material/tabs';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 //archivo de rutas
 import { ProductoRoutingModule } from './producto-routing.module';
@@ -33,14 +35,20 @@ import { CardComponentComponent } from './component/card/card.component';
   ],
   imports: [
     CommonModule,
-    ProductoRoutingModule
+    ProductoRoutingModule,
+    MatTabsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports:[
     ProductoComponent,
     LabialesComponent,
     RostroComponent,
     OjosComponent,
-    UnasComponent
+    UnasComponent,
+    MatTabsModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ProductoModule { }
