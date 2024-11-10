@@ -1,11 +1,10 @@
-<table class="table">
+<table class="table table-responsive">
     <thead>
         <tr>
-            <th class="tabla-titulo" scope="col">#</th>
             <th class="tabla-titulo" scope="col">Imagen</th>
             <th class="tabla-titulo" scope="col">Nombre</th>
             <th class="tabla-titulo" scope="col">Precio</th>
-            <th class="tabla-titulo" scope="col">descripcion</th>
+            <th class="tabla-titulo" scope="col">Descripcion</th>
             <th class="tabla-titulo" scope="col">Categoria</th>
             <th class="tabla-titulo" scope="col">Stock</th>
             <th class="tabla-titulo" scope="col">Acciones</th>
@@ -14,9 +13,8 @@
 
     <tbody>
         <tr *ngFor="let producto of coleccionProductos">
-            <th scope="row">i</th>
             <td>
-                <img src="{{producto.imagen}}" alt="{{producto.alt}}" width="100px">
+                <img src="{{producto.imagen}}" alt="{{producto.alt}}" class="img-fluid" width="100px">
             </td>
             <td>{{producto.nombre}}</td>
             <td>{{producto.precio}}</td>
@@ -25,16 +23,14 @@
             <td>{{producto.stock}}</td>
 
             <!-- ACCIONES -->
-            <!-- EDITAR -->
             <td>
-                <button id="btn-edit" title="Editar" type="button" class="btn btn-outline-writing"
+                <button id="btn-edit" title="Editar" type="button" class="btn btn-outline-success"
                     data-bs-toggle="modal" data-bs-target="#editarProducto" (click)="mostrarEditar(producto)">
                     <mat-icon>edit</mat-icon>
                 </button>
             </td>
             <td>
-                <!-- ELIMINAR -->
-                <button id="btn-delete" tittle="Eliminar" type="button" class="btn btn-outline-danger"
+                <button id="btn-delete" title="Eliminar" type="button" class="btn btn-outline-danger"
                     data-bs-toggle="modal" data-bs-target="#eliminarProducto" (click)="mostrarBorrar(producto)">
                     <mat-icon>delete</mat-icon>
                 </button>
@@ -42,6 +38,7 @@
         </tr>
     </tbody>
 </table>
+
 
 <!-- Boton para agregar productos -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agregarProducto">
@@ -177,30 +174,6 @@
                 <button type="button" class="btn btn-outline-success" data-bs-dismiss="modal"
                     (click)="editarProducto()">Guardar</button>
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Modal -->
-<div class="modal fade" *ngIf="modalVisibleProducto" id="eliminarProducto" tabindex="-1"
-    aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Esta seguro de eliminar el producto</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-            </div>
-            <div class="modal-body modal-nombre">
-                {{productoSeleccionado.nombre}}
-                <img src="{{productoSeleccionado.imagen}}" alt="{{productoSeleccionado.alt}}">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
-                    aria-label="Cerrar">Cerrar</button>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                    (click)="borrarProducto()">Borrar</button>
             </div>
         </div>
     </div>

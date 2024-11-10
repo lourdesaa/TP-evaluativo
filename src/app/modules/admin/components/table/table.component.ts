@@ -3,6 +3,7 @@ import { Producto } from 'src/app/models/producto'
 import { CrudService } from '../../services/crud.service';
 import { FormControl, FormGroup, Validator, Validators } from '@angular/forms';
 import { Subscriber } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-table',
@@ -58,14 +59,19 @@ export class TableComponent {
 
       await this.servicioCrud.crearProducto(nuevoProducto)
         .then(producto => {
-          alert("Ha agregado un nuevo producto con exito")
-          // Limpiamos formulario para agregar nuevos productos
-          this.producto.reset();
+          Swal.fire({
+            title: "Bien!",
+            text: "Ha agregado un producto con éxito",
+            icon: "success"
+          });
         })
 
         .catch(error => {
-          alert("Hubo problema al agregar un nuevo producto")
-          this.producto.reset()
+          Swal.fire({
+            icon: "error",
+            title: "Uhh...",
+            text: "Hubo un problema al agregar un nuevo producto"
+          });
         })
     }
   }
@@ -74,19 +80,39 @@ export class TableComponent {
     this.modalVisibleProducto = true
     //toma los valores del producto elegido
     this.productoSeleccionado = productoSeleccionado
+    Swal.fire({
+      title: "Está seguro?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, borrar"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.servicioCrud.eliminarProducto(this.productoSeleccionado.idProducto)
+        Swal.fire({
+          title: "Borrado!",
+          text: "Se ha borrado correctamente",
+          icon: "success"
+        });
+      }
+    });
   }
 
   // Función para eliminar definitivamente al producto
   borrarProducto() {
     this.servicioCrud.eliminarProducto(this.productoSeleccionado.idProducto)
       .then(respuesta => {
-        alert("El producto se ha eliminado correctamente.")
+        Swal.fire({
+          title: "Bien!",
+          text: "Se ha eliminado correctamente",
+          icon: "success"
+        });
       })
       .catch(error => {
         alert("No se ha podido eliminar el producto \n" + error);
       })
   }
-
 
   // Función para seleccionar el producto a editar
   mostrarEditar(productoSeleccionado: Producto) {
@@ -118,10 +144,18 @@ export class TableComponent {
     }
     this.servicioCrud.modificarProducto(this.productoSeleccionado.idProducto, datos)
       .then(producto => {
-        alert("El producto fue modificado con éxito.");
+        Swal.fire({
+          title: "Bien!",
+          text: "Se ha modificado el producto con éxito",
+          icon: "success"
+        });
       })
       .catch(error => {
-        alert("Hubo un problema al modificar el producto.");
+        Swal.fire({
+          title: "Uhh",
+          text: "Hubo un problema al modificar el producto",
+          icon: "error"
+        });
       })
   }
 }

@@ -12,3 +12,64 @@
     font-size: large;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+
+.table th, .table td {
+    text-align: center; /* Centra el texto horizontalmente */
+    vertical-align: middle; /* Centra el contenido verticalmente */
+    font-size: larger;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+@media (max-width: 768px) {
+    .table th, .table td {
+        font-size: 12px; /* Reducir el tamaño de la fuente */
+    }
+
+    .table img {
+        width: 60px; /* Hacer las imágenes más pequeñas */
+    }
+
+    /* Ajustar solo las columnas menos importantes */
+    .table th:nth-child(5),
+    .table td:nth-child(5) {
+        display: none; /* Ocultar la columna de "Categoria" */
+    }
+
+    .table th:nth-child(6),
+    .table td:nth-child(6) {
+        display: none; /* Ocultar la columna de "Stock" */
+    }
+
+    /* La columna de "Acciones" siempre debe ser visible */
+    .table th:nth-child(7),
+    .table td:nth-child(7) {
+        display: table-cell !important; /* Asegurarse de que "Acciones" siempre esté visible */
+    }
+
+    /* Hacer que los botones en los modales sean más pequeños */
+    .modal-footer .btn {
+        font-size: 14px;
+        padding: 5px 10px;
+    }
+}
+
+/* Ajuste adicional para pantallas más pequeñas, por ejemplo, móviles */
+@media (max-width: 576px) {
+    .table th, .table td {
+        font-size: 10px; /* Reducir aún más el tamaño de la fuente */
+    }
+
+    .table img {
+        width: 50px; /* Hacer las imágenes más pequeñas */
+    }
+
+    .btn {
+        font-size: 12px; /* Reducir el tamaño de los botones */
+        padding: 5px 8px; /* Reducir el padding de los botones */
+    }
+
+    .modal-body input {
+        font-size: 14px; /* Ajustar tamaño de los inputs */
+    }
+}

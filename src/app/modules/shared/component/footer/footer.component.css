@@ -1,29 +1,54 @@
-
+/* Aseguramos que el body ocupe todo el alto de la ventana */
+html, body {
+  height: 100%;
+  margin: 0;
+}
 
 .container {
-  max-width: 960px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1; /* Hace que el contenido ocupe todo el espacio disponible */
+  padding: 20px;
 }
 
 footer {
   width: 100%;
-  bottom: 0;
-  z-index: 1000;
-  position: fixed; 
-  text-align: center;
-  margin: auto;
   padding: 10px 0;
-  margin-left: 250px;
+  border-top: 1px solid #e0e0e0;
+  background-color: #f8f9fa;
+  text-align: center; /* Asegura que el contenido dentro del footer se alinee al centro */
+  margin-top: auto; /* Empuja el footer al fondo si el contenido es pequeño */
 }
 
+footer .col-md-4 {
+  display: flex;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+  width: 100%;  /* Asegura que el div ocupe todo el ancho disponible */
+  text-align: center; /* Asegura que el texto también se centre */
+}
 
+footer .text-body-secondary {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+footer a {
+  text-decoration: none;
+  color: inherit; /* Asegura que el enlace no tenga estilo por defecto */
+}
+
+/* Responsividad */
 @media (max-width: 768px) {
   footer .col-md-4 {
-      text-align: center;
-      margin-bottom: 10px;
+    text-align: center;
+    margin-bottom: 10px;
   }
 
   footer .nav {
-      justify-content: center;
+    justify-content: center;
   }
 }
