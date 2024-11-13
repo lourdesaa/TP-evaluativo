@@ -4,30 +4,32 @@ html, body {
   margin: 0;
 }
 
+/* El contenedor principal debe ocupar toda la altura de la ventana */
 .container {
   display: flex;
   flex-direction: column;
 }
 
+/* El contenido debe ocupar todo el espacio disponible entre el contenido y el footer */
 .content {
-  flex: 1; /* Hace que el contenido ocupe todo el espacio disponible */
   padding: 20px;
 }
 
+/* Estilos para el footer */
 footer {
-  width: 100%;
+  width: 65%;
   padding: 10px 0;
-  border-top: 1px solid #e0e0e0;
-  background-color: #f8f9fa;
   text-align: center; /* Asegura que el contenido dentro del footer se alinee al centro */
-  margin-top: auto; /* Empuja el footer al fondo si el contenido es pequeño */
+    z-index: 1000;
+    margin: auto;
+    
 }
 
 footer .col-md-4 {
   display: flex;
   justify-content: center; /* Centra el contenido horizontalmente */
   align-items: center; /* Centra el contenido verticalmente */
-  width: 100%;  /* Asegura que el div ocupe todo el ancho disponible */
+  width: 100%;
   text-align: center; /* Asegura que el texto también se centre */
 }
 

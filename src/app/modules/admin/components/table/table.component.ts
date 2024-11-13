@@ -11,51 +11,54 @@ import Swal from 'sweetalert2';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent {
-  //crear cleccion de productos del tipo producto -> la definimos como un array
-  coleccionProductos: Producto[] = []
+  // Crear colección de productos del tipo Producto
+  coleccionProductos: Producto[] = [];
 
-  //para manejar el estado de edicion y eliminacion de productos
+  // Para manejar el estado de edicion y eliminacion de productos
   modalVisibleProducto: boolean = false;
 
-  //va a tomar el producto que nosotros elijamos
-  productoSeleccionado!: Producto; //recibe valores vacios
+  productoSeleccionado!: Producto;
 
+  nombreImagen!: string; // Obtendra el nombre de la imagen
 
-  //definimos formulario para los productos
-  //atributos alfanumericos (string) se inicializan con comillas simples
-  //atributos numericos (number) se inicializan con cero "0"
+  imagen!: string; // Obtendra la ruta de la imagen
+
+  // formulario para los productos
   producto = new FormGroup({
     nombre: new FormControl('', Validators.required),
     precio: new FormControl(0, Validators.required),
     descripcion: new FormControl('', Validators.required),
     categoria: new FormControl('', Validators.required),
     imagen: new FormControl('', Validators.required),
+    // imagen: new FormControl('', Validators.required),
     alt: new FormControl('', Validators.required),
-    stock:new FormControl(0, Validators.required)
+    stock: new FormControl(0, Validators.required)
   })
 
   constructor(public servicioCrud: CrudService) { }
 
   ngOnInit(): void {
-    // subscribe => notifica constantemente los cambios actuales del sistema 
     this.servicioCrud.obtenerProducto().subscribe(producto => {
-      // guarda la notificacion recibida como un nuevo "producto" a la coleccion
       this.coleccionProductos = producto;
-    })
+    });
   }
 
   async agregarProducto() {
     if (this.producto.valid) {
       let nuevoProducto: Producto = {
+        // idProducto no se toma porque es generado por la BD y no por el usuario
         idProducto: '',
+        // el resto es tomado con información ingresada por el usuario
         nombre: this.producto.value.nombre!,
-        precio: this.producto.value.precio!,
         descripcion: this.producto.value.descripcion!,
+        precio: this.producto.value.precio!,
         categoria: this.producto.value.categoria!,
+        // imagen ahora toma la URL generada desde Storage
         imagen: '',
         alt: this.producto.value.alt!,
-        stock:this.producto.value.stock!
+        stock: this.producto.value.stock!
       }
+
 
       await this.servicioCrud.crearProducto(nuevoProducto)
         .then(producto => {
@@ -140,7 +143,7 @@ export class TableComponent {
       categoria: this.producto.value.categoria!,
       imagen: this.producto.value.imagen!,
       alt: this.producto.value.alt!,
-      stock:this.producto.value.stock!
+      stock: this.producto.value.stock!
     }
     this.servicioCrud.modificarProducto(this.productoSeleccionado.idProducto, datos)
       .then(producto => {
