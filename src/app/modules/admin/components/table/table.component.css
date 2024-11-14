@@ -1,75 +1,148 @@
-.modal-footer {
+/* Estilo general de la tabla */
+.table {
+    width: 100%;
+    max-width: 100%;
+    background-color: #fff4f4;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table th,
+.table td {
     text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Cabecera de la tabla */
+.table thead th {
+    background-color: #f8d7da;
+    color: #721c24;
+    font-weight: bold;
+    border-bottom: 2px solid #e2e2e2;
+}
+
+/* Filas de la tabla */
+.table tbody tr:nth-child(even) {
+    background-color: #ffe6e9;
+}
+
+.table tbody tr:hover {
+    background-color: #fdd7d9;
+}
+
+/* Estilo de las imágenes */
+.table img {
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.table img:hover {
+    transform: scale(1.1);
+}
+
+/* Botones de acción */
+#btn-edit {
+    color: #28a745;
+    border: 1px solid #28a745;
+}
+
+#btn-edit:hover {
+    background-color: #28a745;
+    color: #fff;
+}
+
+#btn-delete {
+    color: #dc3545;
+    border: 1px solid #dc3545;
+}
+
+#btn-delete:hover {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+/* Botón principal */
+.btn-primary {
+    background-color: #ff577f;
+    border: none;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #ff3366;
+}
+
+/* Estilo de los modales */
+.modal-content {
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #fff9f9;
+}
+
+.modal-header {
+    background-color: #ffe6e9;
+    color: #721c24;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.modal-footer {
     justify-content: center;
 }
 
-.modal-nombre{
-    font-size: large;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+/* Campos de formulario en el modal */
+.modal-body .form-control {
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    transition: border-color 0.3s;
 }
 
-.tabla-titulo{
-    font-size: large;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+.modal-body .form-control:focus {
+    border-color: #ff577f;
+    box-shadow: 0 0 5px rgba(255, 87, 127, 0.5);
 }
 
-
-.table th, .table td {
-    text-align: center; /* Centra el texto horizontalmente */
-    vertical-align: middle; /* Centra el contenido verticalmente */
-    font-size: larger;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
+/* Responsive */
 @media (max-width: 768px) {
-    .table th, .table td {
-        font-size: 12px; /* Reducir el tamaño de la fuente */
-    }
-
     .table img {
-        width: 60px; /* Hacer las imágenes más pequeñas */
+        width: 60px;
     }
 
-    /* Ajustar solo las columnas menos importantes */
     .table th:nth-child(5),
-    .table td:nth-child(5) {
-        display: none; /* Ocultar la columna de "Categoria" */
-    }
-
+    .table td:nth-child(5),
     .table th:nth-child(6),
     .table td:nth-child(6) {
-        display: none; /* Ocultar la columna de "Stock" */
+        display: none;
     }
 
-    /* La columna de "Acciones" siempre debe ser visible */
-    .table th:nth-child(7),
-    .table td:nth-child(7) {
-        display: table-cell !important; /* Asegurarse de que "Acciones" siempre esté visible */
-    }
-
-    /* Hacer que los botones en los modales sean más pequeños */
     .modal-footer .btn {
         font-size: 14px;
         padding: 5px 10px;
     }
 }
 
-/* Ajuste adicional para pantallas más pequeñas, por ejemplo, móviles */
 @media (max-width: 576px) {
-    .table th, .table td {
-        font-size: 10px; /* Reducir aún más el tamaño de la fuente */
+    .table th,
+    .table td {
+        font-size: 10px;
     }
 
     .table img {
-        width: 50px; /* Hacer las imágenes más pequeñas */
+        width: 50px;
     }
 
     .btn {
-        font-size: 12px; /* Reducir el tamaño de los botones */
-        padding: 5px 8px; /* Reducir el padding de los botones */
+        font-size: 12px;
+        padding: 5px 8px;
     }
 
     .modal-body input {
-        font-size: 14px; /* Ajustar tamaño de los inputs */
+        font-size: 14px;
     }
 }

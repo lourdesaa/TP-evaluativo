@@ -26,6 +26,64 @@
 
 
 
+
+
+.btn-arrow {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ff0077;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.arrow-circle {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #fff; /* Fondo blanco para el círculo */
+  color: #ff0077; /* Color de la flechita */
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-arrow:hover .arrow-circle {
+  background-color: #e0e0e0; /* Cambia el fondo del círculo al pasar el mouse */
+  transform: translateX(5px); /* Mueve la flechita a la derecha */
+}
+
+/* Flechita dentro del botón */
+.btn-arrow span {
+  display: inline-block;
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+}
+
+/* Efecto hover en el botón */
+.btn-arrow:hover {
+  color: #ffffff;
+  background-color: #ff87bb;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Mueve la flecha a la derecha en hover */
+.btn-arrow:hover span {
+  transform: translateX(5px);
+}
+
+
+
+
+
 /* cards */
 .card {
   background: #dab2e4;

@@ -22,7 +22,8 @@ footer {
   text-align: center; /* Asegura que el contenido dentro del footer se alinee al centro */
     z-index: 1000;
     margin: auto;
-    
+    bottom: 0;
+    position: fixed;
 }
 
 footer .col-md-4 {
