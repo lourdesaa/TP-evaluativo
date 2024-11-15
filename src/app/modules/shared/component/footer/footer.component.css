@@ -18,12 +18,14 @@ html, body {
 /* Estilos para el footer */
 footer {
   width: 65%;
-  padding: 10px 0;
   text-align: center; /* Asegura que el contenido dentro del footer se alinee al centro */
-    z-index: 1000;
-    margin: auto;
-    bottom: 0;
-    position: fixed;
+  margin: auto;
+  padding: 10px 0;
+  border-top: 1px solid #e0e0e0;
+  background-color: #f8f9fa;
+  margin-top: auto; /* Empuja el footer al fondo si el contenido es pequeño */
+  bottom: 0;
+  /* position: fixed; */
 }
 
 footer .col-md-4 {

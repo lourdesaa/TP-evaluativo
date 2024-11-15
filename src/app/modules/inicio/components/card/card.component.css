@@ -25,10 +25,10 @@
 
 
 
-
-
-
+/* boton de "ver" */
 .btn-arrow {
+  position: relative;
+  position: absolute; /* Para colocarlo sobre la imagen */
   display: inline-flex;
   align-items: center;
   padding: 10px 20px;
@@ -41,6 +41,22 @@
   cursor: pointer;
   transition: all 0.3s ease;
 }
+
+
+/* Botón "Ver" encima de la imagen */
+.btn-ver {
+  bottom: 10px; /* Espaciado desde el borde inferior */
+  left: 10px; /* Espaciado desde el borde izquierdo */
+  z-index: 10; /* Asegura que quede por encima de la imagen */
+  color: #ffffff;
+  background-color: #ff0077;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
 
 .arrow-circle {
   display: inline-flex;
@@ -86,56 +102,49 @@
 
 /* cards */
 .card {
-  background: #dab2e4;
+  margin-top: 20px; /* Reduce el margen superior */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  width: 300px;
-  height: 100%;
+  width: 280px; /* Ajusta el ancho */
+  height: 360px; /* Altura fija para evitar tarjetas largas */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   flex: 1 1 calc(33.333% - 20px);
   box-sizing: border-box;
+  position: relative;
 }
 
 .card-img {
-  width: 300px;
-  height: 100%;
+  width: 100%;
+  height: 200px; /* Ajusta la altura de la imagen */
   object-fit: cover;
-  border-bottom: 1px solid #ddd;
-}
-
-.precio {
-  margin-top: 10px;
-  font-size: 1.5em;
-  font-weight: 500;
-  color: #000000;
-  position: relative;
 }
 
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  padding: 20px;
+  gap: 15px; /* Ajusta el espacio entre tarjetas */
+  padding: 10px;
   justify-content: center;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 767px) {
+  .card {
+    width: 90%; /* Ocupa la mayor parte del ancho en móviles */
+    height: auto; /* Ajusta automáticamente la altura */
+  }
+
+  .card-img {
+    height: 150px; /* Reduce la altura de la imagen en móviles */
+  }
 }
 
 .card:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
-/* 
-.card:hover::before {
-  content: url('https://ar.todomoda.com/media/catalog/product/7/6/76234303_0_1_20240523180645.jpg?quality=75&bg-color=255,255,255&fit=bounds&height=841&width=657&canvas=657:841');
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 1;
-  transition: opacity 0.3s ease;
-} */
+
 
 .contenido {
   margin-bottom: 20px;
@@ -158,4 +167,34 @@
       position: relative;
       font-size: medium;
   }
+}
+
+@media (max-width: 768px) {
+  .btn-ver {
+      font-size: 12px;
+      padding: 5px 8px;
+  }
+}
+
+
+
+
+/* Contenedor de la imagen y el botón */
+.card {
+  position: relative; /* Necesario para que los elementos dentro se posicionen relativos al card */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 300px;
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex: 1 1 calc(33.333% - 20px);
+  box-sizing: border-box;
+}
+
+/* Imagen dentro del card */
+.card-img {
+  width: 100%;
+  height: 300px; /* Puedes ajustar la altura según tus necesidades */
+  object-fit: cover;
 }
