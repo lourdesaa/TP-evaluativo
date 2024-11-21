@@ -11,14 +11,13 @@ export class CardLabialesComponent {
   // Definimos colección local de productos
   coleccionLabiales: Producto[] = [];
 
+  coleccionProducto: Producto[] = []
   // Variable local para obtener producto seleccionado
   productoSeleccionado!: Producto;
 
   // Variable para manejar estado de un modal
   modalVisible: boolean = false;
 
-  //Booleana para manejar la visibilidad de "ultima compra"
-  compraVisible: boolean = false;
 
   //Directivas para comuncarse con el componente padre
   @Input() productoReciente: string = ''
@@ -30,7 +29,20 @@ export class CardLabialesComponent {
 
   ngOnInit(): void {
     this.servicioCrud.obtenerProducto().subscribe(producto => {
-      this.coleccionLabiales = producto;
+      this.coleccionProducto = producto;
+      this.mostrarProductoLabiales();
+    })
+  }
+
+  // Función para filtrar los productos que sean del tipo "juguetes"
+  mostrarProductoLabiales() {
+    // forEach: itera la colección
+    this.coleccionProducto.forEach(producto => {
+
+      if (producto.categoria === "labiales") {
+        // .push: sube o agrega un item a una colección
+        this.coleccionLabiales.push(producto);
+      }
     })
   }
 
@@ -42,11 +54,4 @@ export class CardLabialesComponent {
     // Guarda información de un producto elegido por el usuario
     this.productoSeleccionado = info;
   }
-
-  agregarProducto(info: Producto) {
-    this.productoAgregado.emit(info)
-    this.compraVisible = true
-  }
-
-
 }

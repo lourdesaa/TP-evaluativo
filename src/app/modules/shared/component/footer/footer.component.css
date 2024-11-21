@@ -1,59 +1,90 @@
-/* Aseguramos que el body ocupe todo el alto de la ventana */
-html, body {
-  height: 100%;
+body {
+  font-family: Arial, sans-serif;
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* El contenedor principal debe ocupar toda la altura de la ventana */
-.container {
+footer {
+  background: #f3e3f0;
+  color: #000000;
+  padding: 20px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  
+}
+
+.footer-container {
   display: flex;
-  flex-direction: column;
-}
-
-/* El contenido debe ocupar todo el espacio disponible entre el contenido y el footer */
-.content {
+  justify-content: space-around;
+  flex-wrap: wrap;
   padding: 20px;
 }
 
-/* Estilos para el footer */
-footer {
-  width: 65%;
-  text-align: center; /* Asegura que el contenido dentro del footer se alinee al centro */
-  margin: auto;
-  padding: 10px 0;
-  border-top: 1px solid #e0e0e0;
-  background-color: #f8f9fa;
-  margin-top: auto; /* Empuja el footer al fondo si el contenido es pequeño */
-  bottom: 0;
-  /* position: fixed; */
+.footer-section {
+  flex: 1;
+  margin: 20px;
 }
 
-footer .col-md-4 {
-  display: flex;
-  justify-content: center; /* Centra el contenido horizontalmente */
-  align-items: center; /* Centra el contenido verticalmente */
-  width: 100%;
-  text-align: center; /* Asegura que el texto también se centre */
+.footer-section h2 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #000000;
 }
 
-footer .text-body-secondary {
-  font-size: 1rem;
-  color: #6c757d;
+.footer-section p,
+.footer-section ul,
+.footer-section li {
+  font-size: 14px;
+  color: #000000;
+  line-height: 1.6;
 }
 
-footer a {
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+  color: #000000;
   text-decoration: none;
-  color: inherit; /* Asegura que el enlace no tenga estilo por defecto */
+  transition: color 0.3s;
 }
 
-/* Responsividad */
+.footer-section ul li a:hover {
+  color: #ddd;
+}
+
+.footer-section .contact ul li {
+  display: flex;
+  align-items: center;
+}
+
+.footer-section .contact ul li i {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.footer-bottom {
+  background: #222;
+  color: #bbb;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 20px;
+}
+
 @media (max-width: 768px) {
-  footer .col-md-4 {
-    text-align: center;
-    margin-bottom: 10px;
+  .footer-container {
+      flex-direction: column;
+      align-items: center;
   }
 
-  footer .nav {
-    justify-content: center;
+  .footer-section {
+      margin: 20px 0;
   }
 }

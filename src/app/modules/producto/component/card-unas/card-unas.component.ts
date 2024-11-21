@@ -11,14 +11,13 @@ export class CardUnasComponent {
   // Definimos colección local de productos
   coleccionUnas: Producto[] = [];
 
+  coleccionProducto:Producto[]=[]
   // Variable local para obtener producto seleccionado
   productoSeleccionado!: Producto;
 
   // Variable para manejar estado de un modal
   modalVisible: boolean = false;
 
-  //Booleana para manejar la visibilidad de "ultima compra"
-  compraVisible: boolean = false;
 
   //Directivas para comuncarse con el componente padre
   @Input() productoReciente: string = ''
@@ -30,9 +29,22 @@ export class CardUnasComponent {
 
   ngOnInit(): void {
     this.servicioCrud.obtenerProducto().subscribe(producto => {
-      this.coleccionUnas = producto;
+      this.coleccionProducto = producto;
+      this.mostrarProductoUnas();
     })
   }
+
+// Función para filtrar los productos que sean del tipo "juguetes"
+mostrarProductoUnas(){
+  // forEach: itera la colección
+  this.coleccionProducto.forEach(producto => {
+
+    if(producto.categoria === "unas"){
+      // .push: sube o agrega un item a una colección
+      this.coleccionUnas.push(producto);
+    }
+  })
+}
 
   // Función para modal que muestre la información de un producto en específico
   mostrarVer(info: Producto) {
@@ -43,8 +55,4 @@ export class CardUnasComponent {
     this.productoSeleccionado = info;
   }
 
-  agregarProducto(info: Producto) {
-    this.productoAgregado.emit(info)
-    this.compraVisible = true
-  }
 }

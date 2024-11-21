@@ -1,7 +1,7 @@
 export interface  Maquillaje {
     id: string;
     nombre: string;
-    precio: number;
+    ruta:string;
     imagen: string;
     alt: string;
     categoria:string;

@@ -34,8 +34,8 @@
             </mat-card-header>
             <img class="card-img" mat-card-image src="{{i.imagen}}" alt="{{i.alt}}">
             <mat-card-actions>
-              <button class="btn-arrow" >
-                {{i.nombre}} <span>&rarr;</span>
+              <button class="btn-arrow"  [routerLink]="i.ruta">
+                  {{i.nombre}} <span>&rarr;</span>
             </button>
             
             </mat-card-actions>

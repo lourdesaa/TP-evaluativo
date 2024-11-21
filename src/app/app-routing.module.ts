@@ -26,7 +26,7 @@ const routes: Routes = [
   },
   {
     path:"",loadChildren:()=> import('./modules/carrito/carrito.module').then(m => m.CarritoModule)
-  }
+  },
 ];
 
 

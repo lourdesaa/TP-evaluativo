@@ -12,6 +12,10 @@ import { CardComponent } from './components/card/card.component';
 // COMPONENTES QUE IMPORTAMOS DESDE MATERIAL
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { OjosComponent } from '../producto/pages/ojos/ojos.component';
+import { RostroComponent } from '../producto/pages/rostro/rostro.component';
+import { UnasComponent } from '../producto/pages/unas/unas.component';
+import { LabialesComponent } from '../producto/pages/labiales/labiales.component';
 
 @NgModule({
   declarations: [
