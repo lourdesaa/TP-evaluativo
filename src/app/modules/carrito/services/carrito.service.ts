@@ -15,14 +15,15 @@ export class CarritoService {
   pedido:Pedido = {
     idPedido:'',
     producto:{
-      idProducto:'',
-      nombre:'',
-      precio:0,
-      descripcion:'',
-      categoria:'',
-      imagen:'',
-      alt:'',
-      stock: 0
+      idProducto: '',
+      nombre: '',
+      precio: 0,
+      descripcion: '',
+      categoria: '',
+      imagen: '',
+      alt: '',
+      stock: 0,
+      ruta: ''
     },
     cantidad:0,
     total:0

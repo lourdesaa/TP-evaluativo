@@ -1,0 +1,108 @@
+/* Estilos generales para la sección sobre nosotros */
+#sobre-nosotros {
+    font-family: 'Arial', sans-serif;
+    background-color: #fafafa; /* Fondo suave */
+    padding: 50px 0; /* Espaciado superior e inferior */
+  }
+  
+  #sobre-nosotros h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #f68eb0; /* Rosa cálido */
+    margin-bottom: 30px;
+  }
+  
+  #sobre-nosotros p {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6;
+    text-align: justify;
+    margin-bottom: 20px;
+  }
+  
+  #sobre-nosotros .lead {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #f68eb0;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Estilos para la historia */
+  .about-us {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    margin-bottom: 40px;
+  }
+  
+  .about-us p {
+    color: #333;
+  }
+  
+  /* Estilos para la filosofía */
+  .philosophy {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    margin-bottom: 40px;
+  }
+  
+  .philosophy h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #f68eb0;
+    margin-bottom: 15px;
+  }
+  
+  .philosophy p {
+    color: #777;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
+  /* Estilos para la lista de "¿Por qué elegirnos?" */
+  .why-choose-us {
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+  
+  .why-choose-us h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #f68eb0;
+    margin-bottom: 20px;
+  }
+  
+  .why-choose-us ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .why-choose-us ul li {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 15px;
+  }
+  
+  .why-choose-us ul li strong {
+    font-weight: 700;
+    color: #f68eb0;
+  }
+  
+  /* Estilos para el llamado a la acción */
+  .text-center p {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  .text-center strong {
+    color: #f68eb0;
+    font-weight: 700;
+  }
+  

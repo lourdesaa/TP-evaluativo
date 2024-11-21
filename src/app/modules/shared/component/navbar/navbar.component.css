@@ -1,3 +1,91 @@
+/* Estilos para la barra de navegación */
+mat-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background-color: #f68eb0; /* Color de fondo rosa */
+  }
+  
+  /* Contenedor de los enlaces en el navbar que solo será visible en pantallas grandes */
+  .navbar-links {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+  }
+  
+  /* Estilos para los botones de navegación */
+  button.mat-button {
+    color: white;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+  }
+  
+  /* Media query para pantallas pequeñas */
+  @media (max-width: 768px) {
+  
+    /* Mostrar el botón de menú hamburguesa */
+    #menuSecciones {
+      display: block;
+    }
+  
+    /* Los botones del navbar deben ser ocultos en pantallas pequeñas */
+    .navbar-links {
+      display: none;
+    }
+  
+    /* Los menús y botones deben estar más ajustados */
+    mat-menu {
+      min-width: 100%;
+      text-align: left;
+    }
+  
+    /* Hacer que los botones del menú ocupen toda la anchura */
+    button.mat-button,
+    mat-icon-button {
+      width: 100%;
+      text-align: left;
+    }
+  
+    /* Reducir el tamaño de los íconos */
+    .example-icon {
+      font-size: 2rem;
+    }
+  }
+  
+  /* Media query para pantallas más grandes (escritorios, tabletas) */
+  @media (min-width: 769px) {
+  
+    /* Los botones "Contacto" y "Sobre Nosotros" deben aparecer en el navbar */
+    .navbar-links {
+      display: flex;
+    }
+  
+    /* Los íconos del carrito y el usuario deben tener un tamaño adecuado */
+    .example-icon {
+      font-size: 1.5rem;
+    }
+  
+    mat-toolbar {
+      flex-direction: row;
+      align-items: center;
+    }
+  
+    /* Los botones del menú deben estar en una fila en pantallas grandes */
+    #menuSecciones {
+      display: none;
+    }
+  }
+  
+
+
+
+
+
+
+
+
+
 .example-spacer {
     flex: 1 1 auto;
 }
@@ -22,7 +110,6 @@
     color: #333;
     text-align: center;
     margin: 20px 0;
-    text-transform: uppercase; 
 }
 
 .lightneat{

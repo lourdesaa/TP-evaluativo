@@ -56,7 +56,8 @@ export class TableComponent {
         // imagen ahora toma la URL generada desde Storage
         imagen: '',
         alt: this.producto.value.alt!,
-        stock: this.producto.value.stock!
+        stock: this.producto.value.stock!,
+        ruta: ''
       }
 
 
@@ -143,7 +144,8 @@ export class TableComponent {
       categoria: this.producto.value.categoria!,
       imagen: this.producto.value.imagen!,
       alt: this.producto.value.alt!,
-      stock: this.producto.value.stock!
+      stock: this.producto.value.stock!,
+      ruta: ''
     }
     this.servicioCrud.modificarProducto(this.productoSeleccionado.idProducto, datos)
       .then(producto => {

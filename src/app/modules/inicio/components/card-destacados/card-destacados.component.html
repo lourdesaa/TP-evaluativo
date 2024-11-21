@@ -1,0 +1,29 @@
+<h1>Objetos destacados</h1>
+<div class="container">
+  <div class="row">
+    <div *ngFor="let i of info" class="col-lg-3">
+      <div class="card-container">
+        <div class="contenido">
+          <mat-card class="card">
+            <mat-card-header>
+              <mat-card-title></mat-card-title>
+            </mat-card-header>
+            <img class="card-img" mat-card-image src="{{i.imagen}}" alt="{{i.alt}}">
+            <mat-card-actions>
+              <p>{{i.categoria}}</p>
+              
+            </mat-card-actions>
+            <mat-card-actions>
+
+                <button class="btn-arrow" [routerLink]="i.ruta">
+                    {{i.nombre}} <span>&rarr;</span>
+                  </button>
+
+            </mat-card-actions>
+          
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

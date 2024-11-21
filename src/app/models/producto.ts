@@ -7,4 +7,6 @@ export interface Producto {
     imagen: string,
     alt: string,
     stock:number
+    ruta:string;
+
 }

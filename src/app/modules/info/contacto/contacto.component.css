@@ -1,0 +1,266 @@
+/* Estilos generales para la sección de contacto */
+.container {
+    padding: 30px;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    color: #f68eb0; /* Color rosa para el título */
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  /* Estilos para la información de contacto */
+  .contact-info h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  .contact-info ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .contact-info ul li {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para el mapa */
+  .map-container {
+    margin-top: 20px;
+  }
+  
+  .map-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  #map {
+    width: 100%;
+    height: 300px;
+    border: 0;
+    border-radius: 8px;
+  }
+  
+  /* Estilos para el formulario */
+  .contact-form {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-form .form-label {
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .contact-form .form-control {
+    margin-bottom: 15px;
+  }
+  
+  .contact-form textarea {
+    resize: none;
+  }
+  
+  .btn-rosa {
+    background-color: #f68eb0;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-rosa:hover {
+    background-color: #f05693;
+  }
+  
+  /* Estilos responsivos */
+  @media (max-width: 768px) {
+    .contact-info, .contact-form {
+      margin-bottom: 30px;
+    }
+  
+    /* Las columnas se apilan en pantallas pequeñas */
+    .row {
+      flex-direction: column;
+    }
+  
+    /* El mapa tiene una altura más pequeña en pantallas móviles */
+    #map {
+      height: 200px;
+    }
+  
+    /* Ajustes en los márgenes de los formularios */
+    .contact-form {
+      margin-top: 20px;
+    }
+  
+    .contact-form .form-control {
+      font-size: 0.9rem;
+    }
+  
+    .contact-info ul li {
+      font-size: 0.9rem;
+    }
+  
+    .contact-info h4 {
+      font-size: 1.2rem;
+    }
+  }
+  
+  /* Estilos para pantallas más grandes */
+  @media (min-width: 769px) {
+    /* En pantallas más grandes, las columnas se mantienen en 2 */
+    .row {
+      display: flex;
+      justify-content: space-between;
+    }
+  
+    /* El mapa toma el 100% del ancho */
+    .map-container {
+      width: 100%;
+    }
+  
+    .contact-info, .contact-form {
+      margin-top: 20px;
+    }
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+/* Estilos para la información de contacto */
+.contact-info {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .contact-info h4 {
+    font-size: 1.5rem;
+    color: #f68eb0;  /* Rosa para el título */
+    margin-bottom: 20px;
+  }
+  
+  .contact-info ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .contact-info ul li {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  
+  .contact-info ul li strong {
+    font-weight: 600;
+    color: #333;
+  }
+
+
+
+/* Estilos generales para el formulario */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 25px;
+    border-radius: 10px;
+    background-color: #fff; /* Fondo blanco para el formulario */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    margin-bottom: 50px;
+  }
+  
+/* Estilo para el texto debajo del título */
+.contact-text {
+    font-size: 1.1rem;
+    color: #f68eb0; /* Color rosa suave para hacerla más acorde con el tema */
+    font-weight: 500; /* Hacerlo un poco más destacado */
+    line-height: 1.6;
+    max-width: 800px; /* Ancho máximo para que no se vea muy largo */
+    margin: 0 auto; /* Centrado */
+    font-family: 'Arial', sans-serif; /* Fuente más moderna */
+  }
+  
+
+  /* Título del formulario */
+  .contact-form h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #333;  /* Título en color oscuro */
+    margin-bottom: 25px;
+  }
+  
+  /* Estilo de los campos de entrada */
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 1rem;
+    padding: 12px;
+    border: 1px solid #f8c8d8;  /* Bordes suaves con color rosa claro */
+    border-radius: 5px;
+    width: 100%;
+    background-color: #fff; /* Fondo blanco para los campos */
+    transition: all 0.3s ease; /* Transición suave */
+  }
+  
+  /* Efecto de enfoque en los campos */
+  .contact-form input:focus,
+  .contact-form textarea:focus {
+    border-color: #f68eb0; /* Color rosa fuerte al enfocar */
+    outline: none;
+    box-shadow: 0 0 5px rgba(246, 142, 176, 0.7); /* Sombra rosada */
+  }
+  
+  /* Botón de envío */
+  .contact-form button {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 30px;
+    background-color: #f68eb0;  /* Fondo rosa */
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+  }
+  
+  /* Efecto de hover en el botón */
+  .contact-form button:hover {
+    background-color: #f38e9e; /* Color rosa más claro al pasar el ratón */
+    cursor: pointer;
+  }
+  
+  /* Responsividad para pantallas pequeñas */
+  @media (max-width: 767px) {
+    .contact-form {
+      padding: 15px;
+    }
+  
+    .contact-form h2 {
+      font-size: 1.6rem;  /* Reducir el tamaño del título */
+    }
+  
+    .contact-form button {
+      width: 100%; /* Hacer el botón de envío de ancho completo en móviles */
+    }
+  }
+  

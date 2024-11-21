@@ -16,11 +16,13 @@ import { OjosComponent } from '../producto/pages/ojos/ojos.component';
 import { RostroComponent } from '../producto/pages/rostro/rostro.component';
 import { UnasComponent } from '../producto/pages/unas/unas.component';
 import { LabialesComponent } from '../producto/pages/labiales/labiales.component';
+import { CardDestacadosComponent } from './components/card-destacados/card-destacados.component';
 
 @NgModule({
   declarations: [
     InicioComponent,
-    CardComponent
+    CardComponent,
+    CardDestacadosComponent
   ],
   imports: [
     CommonModule,
