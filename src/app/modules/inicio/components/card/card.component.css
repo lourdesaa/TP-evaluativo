@@ -16,6 +16,7 @@
   padding: 10px;
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: 60px;
 }
 
 /* Botón de "Ver" */
@@ -77,7 +78,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   width: 280px;
-  height: 360px;
+  height: 270px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   flex: 1 1 calc(33.333% - 20px);
   box-sizing: border-box;

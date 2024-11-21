@@ -1,29 +1,26 @@
-<h1>Objetos destacados</h1>
+
 <div class="container">
+  <h1 class="section-title">Productos destacados</h1>
   <div class="row">
     <div *ngFor="let i of info" class="col-lg-3">
       <div class="card-container">
-        <div class="contenido">
-          <mat-card class="card">
-            <mat-card-header>
-              <mat-card-title></mat-card-title>
-            </mat-card-header>
-            <img class="card-img" mat-card-image src="{{i.imagen}}" alt="{{i.alt}}">
-            <mat-card-actions>
-              <p>{{i.categoria}}</p>
-              
-            </mat-card-actions>
-            <mat-card-actions>
-
-                <button class="btn-arrow" [routerLink]="i.ruta">
-                    {{i.nombre}} <span>&rarr;</span>
-                  </button>
-
-            </mat-card-actions>
-          
-          </mat-card>
-        </div>
+        <mat-card class="card">
+          <mat-card-header>
+            <mat-card-title class="product-name">{{i.nombre}}</mat-card-title>
+          </mat-card-header>
+          <img class="card-img" mat-card-image src="{{i.imagen}}" alt="{{i.alt}}">
+          <!-- <mat-card-content>
+            <p class="product-description">{{i.descripcion}}</p>
+          </mat-card-content> -->
+          <mat-card-actions>
+            <button class="btn-arrow" [routerLink]="i.ruta">
+              {{i.categoria}} <span>&rarr;</span>
+            </button>
+          </mat-card-actions>
+        </mat-card>
       </div>
     </div>
   </div>
 </div>
+
+

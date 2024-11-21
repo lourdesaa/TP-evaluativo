@@ -12,8 +12,15 @@ footer {
   position: relative;
   bottom: 0;
   width: 100%;
-  
 }
+
+img {
+  margin-left: 90px;
+  max-width: 35%; /* Imagen responsiva */
+  height: auto;    /* Mantiene la proporción */
+  display: block;  /* Evita espacios extra */
+}
+
 
 .footer-container {
   display: flex;
@@ -41,15 +48,6 @@ footer {
   line-height: 1.6;
 }
 
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-section ul li {
-  margin-bottom: 10px;
-}
-
 .footer-section ul li a {
   color: #000000;
   text-decoration: none;
@@ -66,8 +64,11 @@ footer {
 }
 
 .footer-section .contact ul li i {
-  margin-right: 10px;
   font-size: 18px;
+}
+
+.ul{
+  margin: 10px 0
 }
 
 .footer-bottom {

@@ -16,50 +16,51 @@ export class CardDestacadosComponent {
     this.info = [
       {
         //labiales
-        nombre: "Ver mas",
-        imagen: "https://ar.todomoda.com/media/catalog/product/8/1/81336001_1_1_20240930174308.jpg?quality=75&bg-color=255,255,255&fit=bounds&height=841&width=657&canvas=657:841",
-        alt: "Labiales",
-        categoria: "bjfahsbdljfhasbdlfjhbasjhdfbasdjklfbasjdf",
+        nombre: "Paleta de sombras para ojos 'preppy cool'",
+        imagen: "https://ar.todomoda.com/media/catalog/product/8/0/80920201_3_1_20240704162505.jpg?quality=75&bg-color=255,255,255&fit=bounds&height=841&width=657&canvas=657:841",
+        alt: "paleta",
+        categoria: "Ver mas",
         idProducto: '',
-        precio: 0,
-        descripcion: '',
+        precio: 8000,
+        descripcion: 'Paleta de 9 sombras para ojos, antioxidante con vitamina E',
         stock: 0,
         ruta: ''
       },
       {
-        nombre: "Ver mas",
-        imagen: "https://ar.todomoda.com/media/catalog/product/7/6/76555801_0_1_20211202000754.jpg?quality=75&bg-color=255,255,255&fit=bounds&height=841&width=657&canvas=657:841",
+        nombre: "Polvo de maquillaje #powder mode on!",
+        imagen: "https://ar.todomoda.com/media/catalog/product/7/9/79954701_2_1_20240325211311.jpg?quality=75&bg-color=255,255,255&fit=bounds&height=841&width=657&canvas=657:8411",
         alt: "Rostro",
-        categoria: "Rostro",
+        categoria: "Ver mas",
         idProducto: '',
-        precio: 0,
-        descripcion: '',
+        precio: 7500,
+        descripcion: 'Polvo de maquillaje con de textura extra fina y efecto matificante',
         stock: 0,
         ruta: ''
       },
       {
-        nombre: "Ver mas",
-        imagen: "https://ar.todomoda.com/media/catalog/product/7/6/76363401_0_3_20210811120117.jpg?quality=75&bg-color=255,255,255&fit=bounds&height=841&width=657&canvas=657:841",
+        nombre: "Lip oil hidratante y nutritivo efecto glossy - lucky charm",
+        imagen: "https://ar.todomoda.com/media/catalog/product/7/8/78834501_1_1_20230327180242.jpg?quality=75&bg-color=255,255,255&fit=bounds&height=841&width=657&canvas=657:841",
         alt: "Ojos",
-        categoria: "Ojos",
+        categoria: "Ver mas",
         idProducto: '',
-        precio: 0,
-        descripcion: '',
+        precio: 4600,
+        descripcion: 'Lip oil hidratante y nutritivo #glossy lip must - Peach',
         stock: 0,
         ruta: ''
       },
       {
-        nombre: "Ver mas",
-        imagen: "https://ar.todomoda.com/media/catalog/product/7/6/76262585_0_3_20210628181103.jpg?quality=75&bg-color=255,255,255&fit=bounds&height=841&width=657&canvas=657:841",
+        nombre: "Esmalte para uñas con brillo y de acabado cremoso",
+        imagen: "https://ar.todomoda.com/media/catalog/product/7/6/76940301_1_1_20220512181453.jpg?quality=75&bg-color=255,255,255&fit=bounds&height=841&width=657&canvas=657:841",
         alt: "Uñas",
-        categoria: "Uñas",
+        categoria: "Ver mas",
         idProducto: '',
-        precio: 0,
-        descripcion: '',
+        precio: 2200,
+        descripcion: 'Esmalte para uñas con brillo y de acabado cremoso',
         stock: 0,
         ruta: ''
       }
     ]
   }
 
+  
 }

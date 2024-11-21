@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Producto } from 'src/app/models/producto';
+import { CrudService } from 'src/app/modules/admin/services/crud.service';
+import { CarritoService } from 'src/app/modules/carrito/services/carrito.service';
 import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-producto',
@@ -8,30 +11,62 @@ import Swal from 'sweetalert2';
   styleUrls: ['./producto.component.css']
 })
 export class ProductoComponent {
-  //string que modificara el valor de @input en el componente hijo
-  product: string = '';
+  // Definimos colección local de productos
+  coleccionProductos: Producto[] = [];
 
-  //coleccion de productos añadidos a la lista
-  productoCarrusel: Producto[] = []
+  // Variable local para obtener producto seleccionado
+  productoSeleccionado!: Producto;
 
-  productoAnadido(producto: Producto ) {
-    //modificador del valor "product"
-    this.product = `${producto.nombre} : $${producto.precio}`
+  // Variable para manejar estado de un modal
+  modalVisible: boolean = false;
 
-    try {
-      //agregamos la informacion por el parametro de la funcion a la coleccion de carrusel
-      this.productoCarrusel.push(producto)
+  //Booleano para manejar la visibilidad de "Ultima Compra"
+  compraVisible:boolean = false;
+
+  //Directivas para comunicarse con el componente padre
+  @Input() productoReciente: string = '';
+
+  //Output sera definido como un nuevo evento
+  @Output() productoAgregado = new EventEmitter<Producto>;
+
+  stock:number = 0;
+
+  constructor(
+    public servicioCrud: CrudService,
+    public servicioCarrito:CarritoService
+  ){}
+  
+  ngOnInit(): void{
+    this.servicioCrud.obtenerProducto().subscribe(producto => {
+      this.coleccionProductos = producto;
+    })
+  }
+
+  // Función para modal que muestre la información de un producto en específico
+  mostrarVer(info: Producto){
+    // Habilita visibilidad del modal
+    this.modalVisible = true;
+
+    // Guarda información de un producto elegido por el usuario
+    this.productoSeleccionado = info;
+  }
+
+  agregarProducto(info:Producto){
+    this.productoAgregado.emit(info);
+
+    this.compraVisible = true;
+
+    const stockDeseado = Math.trunc(this.stock);
+
+    //Controla el stock que desea el comprador
+    if (stockDeseado<=0 || stockDeseado > info.stock) {
       Swal.fire({
-        title: 'Bien',
-        text: 'Ha añadido este producto con éxito',
-        icon: 'info',
+        title:'Error al agregar el producto',
+        text:'El stock ingresado no es valido, por favor ingresar un valor valido',
+        icon:'error'
       })
-    } catch (error) {
-      Swal.fire({
-        title: '¡Oh no!',
-        text: 'Ha ocurrido un error\n'+error,
-        icon: 'error',
-      })
+    }else{
+      this.servicioCarrito.crearPedido(info,stockDeseado);
     }
   }
 }
