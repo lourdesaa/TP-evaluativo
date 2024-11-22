@@ -18,10 +18,10 @@
 </div>
 
 <!-- Modal para ver más información -->
-<div class="modal fade" id="mostrarProductoRostro" *ngIf="modalVisible" tabindex="-1" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="mostrarProductoRostro" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" *ngIf="modalVisible">
             <div class="modal-header">
                 <h1 class="modal-title fs-5" id="exampleModalLabel">{{productoSeleccionado.nombre}}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

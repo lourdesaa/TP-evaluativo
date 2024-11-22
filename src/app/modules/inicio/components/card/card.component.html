@@ -1,15 +1,15 @@
-<div id="carouselExample" class="carousel slide">
+<div id="carouselExample" class="carousel slide" >
   <div class="carousel-inner">
-    <div class="carousel-item active">
+    <div class="carousel-item active" routerLink="/producto">
       <img src="https://ar.todomoda.com/media/wysiwyg/TMB_SLIDERS_-_wholesome_honey_3_desktop_.jpg" class="d-block w-100" alt="...">
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item" routerLink="/producto">
       <img src="https://ar.todomoda.com/media/wysiwyg/TMB_SLIDERS_mentally_on_the_wave_03_desktop__1.jpg" class="d-block w-100" alt="...">
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item" routerLink="/producto">
       <img src="https://ar.todomoda.com/media/wysiwyg/TMB_SLIDERS_-_pillow_blush_mobile_.jpg" class="d-block w-100" alt="...">
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item" routerLink="/producto">
       <img src="https://ar.todomoda.com/media/wysiwyg/TMB_SLIDERS_emily_desktop_.jpg" class="d-block w-100" alt="...">
     </div>
   </div>
@@ -25,7 +25,7 @@
 
 <div class="container">
   <div class="row">
-    <div *ngFor="let i of info" class="col-lg-3">
+    <div *ngFor="let i of info" class="col-lg-3 col-6">
       <div class="card-container">
         <div class="contenido">
           <mat-card class="card">

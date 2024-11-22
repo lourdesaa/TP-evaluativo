@@ -8,6 +8,16 @@ h1{
     padding: 1rem;
 }
 
+
 .titulo{
     text-align: center;
 }
+
+.titulo {
+    font-family: 'Arial', sans-serif;  /* Fuente legible */
+    font-size: 1.10rem;  /* Tamaño grande */
+    font-weight: 600;  /* Peso de la fuente para darle fuerza */
+    color: #000000;  /* Color oscuro para el texto */
+    margin-bottom: 15px;  /* Espacio debajo del título */
+    text-align: center;  /* Centrar el título */
+  }

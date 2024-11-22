@@ -113,11 +113,54 @@ h1 {
 /* Media Queries */
 @media (max-width: 767px) {
   .card {
-    width: 90%;
-    height: auto;
+    width: 100%;
+    height: 100%; /* Ajuste automático */
+    padding: 12px;
   }
 
   .card-img {
-    height: 150px;
+    height: 500px; /* Reduce la altura de la imagen en móviles */
+  }
+
+  .card-container {
+    flex-wrap: wrap;
+  }
+
+  .precio {
+    font-size: medium;
+  }
+
+  .btn-ver {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+
+  .btn-arrow {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+    background-color: #ffffff; /* Conserva el color base */
+    color: #ff0077; /* Conserva el color del texto */
+    box-shadow: none;
+    transition: all 0.3s ease; /* Asegura que el hover funcione */
+  }
+
+  .btn-arrow:hover {
+    background-color: #ff87bb;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .btn-arrow:hover span {
+    transform: translateX(5px);
+  }
+
+  .arrow-circle {
+    margin-left: 8px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .carousel-item img {
+    height: 200px;
   }
 }

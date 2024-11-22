@@ -48,7 +48,12 @@ import { CardComponentComponent } from './component/card/card.component';
     UnasComponent,
     MatTabsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CardLabialesComponent,
+    CardRostroComponent,
+    CardOjosComponent,
+    CardUnasComponent,
+    CardComponentComponent
   ]
 })
 export class ProductoModule { }
