@@ -1,13 +1,16 @@
-<div id="carouselExample" class="carousel slide" >
+<div id="carouselExample" class="carousel slide">
   <div class="carousel-inner">
     <div class="carousel-item active" routerLink="/producto">
-      <img src="https://ar.todomoda.com/media/wysiwyg/TMB_SLIDERS_-_wholesome_honey_3_desktop_.jpg" class="d-block w-100" alt="...">
+      <img src="https://ar.todomoda.com/media/wysiwyg/TMB_SLIDERS_-_wholesome_honey_3_desktop_.jpg"
+        class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item" routerLink="/producto">
-      <img src="https://ar.todomoda.com/media/wysiwyg/TMB_SLIDERS_mentally_on_the_wave_03_desktop__1.jpg" class="d-block w-100" alt="...">
+      <img src="https://ar.todomoda.com/media/wysiwyg/TMB_SLIDERS_mentally_on_the_wave_03_desktop__1.jpg"
+        class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item" routerLink="/producto">
-      <img src="https://ar.todomoda.com/media/wysiwyg/TMB_SLIDERS_-_pillow_blush_mobile_.jpg" class="d-block w-100" alt="...">
+      <img src="https://ar.todomoda.com/media/wysiwyg/TMB_SLIDERS_-_pillow_blush_mobile_.jpg" class="d-block w-100"
+        alt="...">
     </div>
     <div class="carousel-item" routerLink="/producto">
       <img src="https://ar.todomoda.com/media/wysiwyg/TMB_SLIDERS_emily_desktop_.jpg" class="d-block w-100" alt="...">
@@ -25,6 +28,7 @@
 
 <div class="container">
   <div class="row">
+
     <div *ngFor="let i of info" class="col-lg-3 col-6">
       <div class="card-container">
         <div class="contenido">
@@ -34,10 +38,13 @@
             </mat-card-header>
             <img class="card-img" mat-card-image src="{{i.imagen}}" alt="{{i.alt}}">
             <mat-card-actions>
-              <button class="btn-arrow"  [routerLink]="i.ruta">
-                  {{i.nombre}} <span>&rarr;</span>
-            </button>
-            
+              <button class="btn-arrow" routerLink="/{{i.categoria}}">
+                {{i.nombre}} <span>&rarr;</span>
+              </button>
+              <!-- Botón "Ver más" -->
+              <button type="button" class="btn1 btn-primary" routerLink="/{{i.categoria}}">
+                ver seccion
+              </button>
             </mat-card-actions>
           </mat-card>
         </div>
@@ -45,3 +52,39 @@
     </div>
   </div>
 </div>
+<!-- 
+<div class="container">
+  <div class="row">
+    <h2>elementos destacados:</h2>
+
+    <div class="col">
+      <div *ngFor="let i of info" class="contenido col-lg-3 col-6">
+
+        <mat-card class="example-card card">
+
+          <mat-card-header>
+
+            <mat-card-title>{{i.nombre}}</mat-card-title>
+
+          </mat-card-header>
+
+          <img mat-card-image src="{{i.imagen}}" alt="{{i.alt}}" class="img-card">
+          <mat-card-content>
+            <p>
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            Botón "Ver más" 
+            <button type="button" class="btn1 btn-primary" data-bs-target="#exampleModal">
+              Ver info
+            </button>
+             Botón "Ver más" 
+            <button type="button" class="btn1 btn-primary" routerLink="/{{i.categoria}}">
+              ver seccion
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div> -->

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Producto } from 'src/app/models/producto';
+import { CrudService } from 'src/app/modules/admin/services/crud.service';
 
 @Component({
   selector: 'app-card-destacados',
@@ -8,11 +9,27 @@ import { Producto } from 'src/app/models/producto';
 })
 export class CardDestacadosComponent {
 
+  // Definimos colección local de productos
+  coleccionProductos: Producto[] = [];
+
+// Colección de sólo productos de categoría ""
+coleccionInicio: Producto[] = [];
+
+  // Variable local para obtener producto seleccionado
+  productoSeleccionado!: Producto;
+
+  // Variable para manejar estado de un modal
+  modalVisible: boolean = false;
+
+  //Booleana para manejar la visibilidad de "ultima compra"
+  compraVisible: boolean = false;
+
 
   public info: Producto[];
 
 
-  constructor() {
+
+  constructor(public servicioCrud: CrudService) {
     this.info = [
       {
         //labiales
@@ -62,5 +79,40 @@ export class CardDestacadosComponent {
     ]
   }
 
-  
+
+  ngOnInit(): void{
+    this.servicioCrud.obtenerProducto().subscribe(producto => {
+      this.coleccionProductos = producto;
+
+      // mostrar la colección actual de Inicio
+      this.mostrarProductoInicio();
+    })
+
+  }
+
+
+
+
+   // Función para modal que muestre la información de un producto en específico
+   mostrarVer(info: Producto) {
+    // Habilita visibilidad del modal
+    this.modalVisible = true;
+
+    // Guarda información de un producto elegido por el usuario
+    this.productoSeleccionado = info;
+  }
+
+  // Función para filtrar los productos que sean del tipo ""
+  mostrarProductoInicio(){
+    // forEach: itera la colección
+    this.coleccionProductos.forEach(producto => {
+      // Si la categoría del producto es igual a "maquinas", se enviará a la 
+      // colección de bancos específicada
+
+      if(producto.categoria === "Ver mas"){
+        // .push: sube o agrega un item a una colección
+        this.coleccionInicio.push(producto);
+      }
+    })
+  }
 }
