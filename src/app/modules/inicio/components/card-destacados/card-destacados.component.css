@@ -119,7 +119,7 @@ h1 {
   }
 
   .card-img {
-    height: 500px; /* Reduce la altura de la imagen en móviles */
+    height: 60%; /* Reduce la altura de la imagen en móviles */
   }
 
   .card-container {

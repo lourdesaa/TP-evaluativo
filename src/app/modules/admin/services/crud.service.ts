@@ -7,7 +7,6 @@ import { map } from 'rxjs';
   providedIn: 'root'
 })
 export class CrudService {
-  //definimos coleccion para los productos de la web de los tipo Producto
   private productoCollection: AngularFirestoreCollection<Producto>
 
   constructor(private database: AngularFirestore) {
@@ -45,8 +44,6 @@ export class CrudService {
   modificarProducto(idProducto: string, nuevaData: Producto) {
     //accedemos a la coleccion, buscamos por ID y actualizamos la informacion
     return this.database.collection('producto').doc(idProducto).update(nuevaData)
-
-
   }
 
   //ELIMINAR productos

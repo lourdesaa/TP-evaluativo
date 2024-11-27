@@ -44,8 +44,8 @@ coleccionInicio: Producto[] = [];
         ruta: ''
       },
       {
-        nombre: "Polvo de maquillaje #powder mode on!",
-        imagen: "https://ar.todomoda.com/media/catalog/product/7/9/79954701_2_1_20240325211311.jpg?quality=75&bg-color=255,255,255&fit=bounds&height=841&width=657&canvas=657:8411",
+        nombre: "Polvo de maquillaje #powder mode on! wqeqw",
+        imagen: "https://ar.todomoda.com/media/catalog/product/7/9/79954701_2_1_20240325211311.jpg?quality=75&bg-color=255,255,255&fit=bounds&height=841&width=657&canvas=657:841",
         alt: "Rostro",
         categoria: "Ver mas",
         idProducto: '',
