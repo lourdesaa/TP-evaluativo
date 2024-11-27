@@ -1,6 +1,7 @@
 <table class="table table-responsive">
     <thead>
         <tr>
+            <!-- definicion de las columnas de la tabla -->
             <th class="tabla-titulo" scope="col">Imagen</th>
             <th class="tabla-titulo" scope="col">Nombre</th>
             <th class="tabla-titulo" scope="col">Precio</th>
@@ -12,6 +13,9 @@
     </thead>
 
     <tbody>
+        <!--se recorre la lista de productos (coleccionProductos) para mostrar sus datos -->
+        <!-- *ngFor="let producto of coleccionProductos": Esta directiva de Angular 
+            itera sobre la lista coleccionProductos para mostrar cada producto en una fila de la tabla. -->
         <tr *ngFor="let producto of coleccionProductos">
             <td>
                 <img src="{{producto.imagen}}" alt="{{producto.alt}}" class="img-fluid" width="100px">
@@ -34,6 +38,7 @@
                     data-bs-toggle="modal" data-bs-target="#eliminarProducto" (click)="mostrarBorrar(producto)">
                     <mat-icon>delete</mat-icon>
                 </button>
+                <!-- data-bs-toggle="modal" y data-bs-target="#editarProducto" vincula el botón al modal correspondiente. -->
             </td>
         </tr>
     </tbody>

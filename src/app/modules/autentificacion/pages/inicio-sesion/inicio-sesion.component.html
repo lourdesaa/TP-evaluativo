@@ -1,25 +1,36 @@
 <div class="container">
     <div class="row form-container">
-        <h1 class="form-title">Inicia Sesión</h1>
-        <i class="material-icons form-icon">person</i>
-
-        <!-- Email de usuario -->
-        <mat-form-field class="form-field" appearance="fill">
-            <mat-label>Ingrese su email:</mat-label>
-            <input [(ngModel)]="usuarioIngresado.email" matInput placeholder="Ej: pepitoperez2022@gmail.com" required>
-        </mat-form-field>
-
-        <!-- Contraseña de usuario -->
-        <mat-form-field class="form-field">
-            <mat-label>Ingrese su contraseña:</mat-label>
-            <input [(ngModel)]="usuarioIngresado.password" matInput [type]="hide ? 'password' : 'text'" #input minlength="6" required>
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
-            <mat-hint align="start">Mínimo:6/{{input.value.length}}</mat-hint>
-        </mat-form-field>
-
-        <!-- Botón para iniciar sesión -->
-        <button mat-raised-button color="primary" class="submit-btn" (click)="iniciarSesion()">Iniciar Sesión</button>
+      <!-- Título de la página de inicio de sesión -->
+      <h1 class="form-title">Inicia Sesión</h1>
+  
+      <!-- Icono para representar al usuario (persona) -->
+      <i class="material-icons form-icon">person</i>
+  
+      <!-- Campo para ingresar el email del usuario -->
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Ingrese su email:</mat-label> <!-- Etiqueta del campo -->
+        <!-- El input está vinculado con el modelo 'usuarioIngresado.email' para obtener el valor -->
+        <input [(ngModel)]="usuarioIngresado.email" matInput placeholder="Ej: pepitoperez2022@gmail.com" required> 
+        <!-- 'matInput' aplica el estilo del material design -->
+      </mat-form-field>
+  
+      <!-- Campo para ingresar la contraseña del usuario -->
+      <mat-form-field class="form-field">
+        <mat-label>Ingrese su contraseña:</mat-label> <!-- Etiqueta del campo -->
+        <!-- Input para la contraseña, el tipo de input cambia entre 'password' o 'text' según el valor de 'hide' -->
+        <input [(ngModel)]="usuarioIngresado.password" matInput [type]="hide ? 'password' : 'text'" #input minlength="6" required>
+        <!-- 'hide' es un valor booleano que determina si la contraseña debe mostrarse o no -->
+        <!-- 'minlength' asegura que la contraseña tenga al menos 6 caracteres -->
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <!-- Botón para mostrar u ocultar la contraseña -->
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon> <!-- Icono cambia según el estado de 'hide' -->
+        </button>
+        <mat-hint align="start">Mínimo:6/{{input.value.length}}</mat-hint> <!-- Muestra la longitud de la contraseña -->
+      </mat-form-field>
+  
+      <!-- Botón para iniciar sesión -->
+      <button mat-raised-button color="primary" class="submit-btn" (click)="iniciarSesion()">Iniciar Sesión</button>
+      <!-- Al hacer clic en este botón se ejecuta la función 'iniciarSesion' -->
     </div>
-</div>
+  </div>
+  

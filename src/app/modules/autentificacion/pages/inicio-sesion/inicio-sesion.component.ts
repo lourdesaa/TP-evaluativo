@@ -1,28 +1,28 @@
 import { Component } from '@angular/core';
-import { Usuario } from 'src/app/models/usuario';
-import { AuthService } from '../../service/auth.service';
-import { FirestoreService } from 'src/app/modules/shared/service/firestore.service';
-import { Router } from '@angular/router';
-import * as CryptoJS from 'crypto-js';
-import Swal from 'sweetalert2';
-import { CarritoService } from 'src/app/modules/carrito/services/carrito.service';
+import { Usuario } from 'src/app/models/usuario'; // Importa la interfaz Usuario
+import { AuthService } from '../../service/auth.service'; // Servicio de autenticación
+import { FirestoreService } from 'src/app/modules/shared/service/firestore.service'; // Servicio de Firestore
+import { Router } from '@angular/router'; // Servicio de enrutamiento para navegación
+import * as CryptoJS from 'crypto-js'; // Biblioteca para encriptar contraseñas
+import Swal from 'sweetalert2'; // Librería para mostrar alertas
+import { CarritoService } from 'src/app/modules/carrito/services/carrito.service'; // Servicio para el carrito de compras
 
 @Component({
-  selector: 'app-inicio-sesion',
-  templateUrl: './inicio-sesion.component.html',
-  styleUrls: ['./inicio-sesion.component.css']
+  selector: 'app-inicio-sesion', // Selector del componente
+  templateUrl: './inicio-sesion.component.html', // Ruta de la plantilla HTML
+  styleUrls: ['./inicio-sesion.component.css'] // Ruta de los estilos CSS
 })
 export class InicioSesionComponent {
-  hide = true;
+  hide = true; // Controla la visibilidad de la contraseña en el formulario
 
   constructor(
-    public servicioAuth: AuthService,
-    public servicioFirestore: FirestoreService,
-    public servicioRutas: Router,
-    public servicioCarrito: CarritoService
+    public servicioAuth: AuthService, // Inyecta el servicio de autenticación
+    public servicioFirestore: FirestoreService, // Inyecta el servicio de Firestore
+    public servicioRutas: Router, // Inyecta el servicio de rutas
+    public servicioCarrito: CarritoService // Inyecta el servicio del carrito
   ) { }
 
-  // Importamos la interfaz de usuario e inicializamos vacío
+  // Declara un objeto de tipo Usuario para almacenar los datos del usuario ingresado
   usuarioIngresado: Usuario = {
     uid: '',
     nombre: '',
@@ -32,92 +32,88 @@ export class InicioSesionComponent {
     password: ''
   }
 
-  // Función para el inicio de sesión
+  // Función para iniciar sesión
   async iniciarSesion() {
-    // Las credenciales reciben la información que se envía desde la web
+    // Obtenemos las credenciales del usuario desde el formulario
     const credenciales = {
       email: this.usuarioIngresado.email,
       password: this.usuarioIngresado.password
     }
 
-    try{
-      // Obtenemos el usuario desde la BD -> Cloud Firestore
+    try {
+      // Intenta obtener el usuario desde Firestore utilizando el email
       const usuarioBD = await this.servicioAuth.obtenerUsuario(credenciales.email);
 
-      // ! -> si es diferente
-      // .empy -> método de Firebase para marcar si algo es vacío
-      if(!usuarioBD || usuarioBD.empty){
+      // Si el usuario no existe en la base de datos, muestra un error
+      if (!usuarioBD || usuarioBD.empty) {
         Swal.fire({
           text: "Correo electrónico no registrado",
           icon: "error"
-        })
-        this.limpiarInputs();
+        });
+        this.limpiarInputs(); // Limpia los campos del formulario
         return;
       }
-      
-      /* Primer documento (registro) en la colección de usuarios que se obtiene desde la 
-        consulta.
-      */
+
+      // Obtiene el primer documento del usuario desde la consulta
       const usuarioDoc = usuarioBD.docs[0];
 
-      /**
-       * Extrae los datos del documento en forma de un objeto y se específica como de tipo 
-       * "Usuario" -> haciendo referencia a nuestra interfaz de Usuario.
-       */
+      // Extrae los datos del documento y los convierte en tipo 'Usuario'
       const usuarioData = usuarioDoc.data() as Usuario;
 
-      // Hash de la contraseña ingresada por el usuario
+      // Hashea la contraseña ingresada para compararla con la almacenada en la base de datos
       const hashedPassword = CryptoJS.SHA256(credenciales.password).toString();
 
-      if(hashedPassword !== usuarioData.password){
+      // Si la contraseña no coincide, muestra un error
+      if (hashedPassword !== usuarioData.password) {
         Swal.fire({
           text: "Contraseña incorrecta",
           icon: "error"
-        })
+        });
 
-        this.usuarioIngresado.password = '';
+        this.usuarioIngresado.password = ''; // Limpia el campo de la contraseña
         return;
       }
 
+      // Si las credenciales son correctas, se inicia la sesión
       const res = await this.servicioAuth.iniciarSesion(credenciales.email, credenciales.password)
-      .then(res => {
-        Swal.fire({
-          text: "¡Se ha logueado con éxito! :D",
-          icon: "success"
-        });
+        .then(res => {
+          // Muestra un mensaje de éxito al iniciar sesión
+          Swal.fire({
+            text: "¡Se ha logueado con éxito! :D",
+            icon: "success"
+          });
 
-        // Almacena el rol del usuario en el servicio de autentificación
-        this.servicioAuth.enviarRolUsuario(usuarioData.rol);
+          // Almacena el rol del usuario en el servicio de autenticación
+          this.servicioAuth.enviarRolUsuario(usuarioData.rol);
 
-        if(usuarioData.rol === "admin"){
-          console.log("Inicio de sesión de usuario administrador")
-
-          // Si es administrador, redirecciona a la vista de 'admin'
-          this.servicioRutas.navigate(['/admin']);
-        } else {
-          console.log("Inicio de sesión de usuario visitante");
-
-          // Si es visitante, redirecciona a la vista de 'inicio'
-          this.servicioRutas.navigate(['/inicio']);
-
-          this.servicioCarrito.iniciarCart();
-        }
-      })
-      .catch(err => {
-        Swal.fire({
-          text: "Hubo un problema al iniciar sesión :(" + err,
-          icon: "error"
+          // Redirecciona según el rol del usuario
+          if (usuarioData.rol === "admin") {
+            console.log("Inicio de sesión de usuario administrador");
+            this.servicioRutas.navigate(['/admin']); // Redirige al panel de administración
+          } else {
+            console.log("Inicio de sesión de usuario visitante");
+            this.servicioRutas.navigate(['/inicio']); // Redirige al inicio
+            this.servicioCarrito.iniciarCart(); // Inicializa el carrito
+          }
         })
+        .catch(err => {
+          // Si ocurre un error al iniciar sesión, muestra un mensaje de error
+          Swal.fire({
+            text: "Hubo un problema al iniciar sesión :(" + err,
+            icon: "error"
+          });
 
-        this.limpiarInputs();
-      })
-    }catch(error){
+          this.limpiarInputs(); // Limpia los campos del formulario
+        })
+    } catch (error) {
+      // Si hay un error en la obtención del usuario, limpia los campos del formulario
       this.limpiarInputs();
     }
   }
 
-  // Función para vaciar el formulario
+  // Función para limpiar los campos del formulario
   limpiarInputs() {
+    // Establece los valores de los campos email y password a vacíos
     const inputs = {
       email: this.usuarioIngresado.email = '',
       password: this.usuarioIngresado.password = ''

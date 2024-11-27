@@ -1,15 +1,10 @@
 import { Component } from '@angular/core';
-import { Usuario } from 'src/app/models/usuario';
-// Servicio de Autentificación
-import { AuthService } from '../../service/auth.service';
-// Servicio de Firestore
-import { FirestoreService } from 'src/app/modules/shared/service/firestore.service';
-// Servicio de rutas que otorga Angular
-import { Router } from '@angular/router';
-// Importamos paquetería de criptación
-import * as CryptoJS from 'crypto-js';
-// Importamos paquetería de SweetAlert para alertas personalizadas
-import Swal from 'sweetalert2';
+import { Usuario } from 'src/app/models/usuario';  // Importamos el modelo de Usuario
+import { AuthService } from '../../service/auth.service';  // Servicio para la autenticación
+import { FirestoreService } from 'src/app/modules/shared/service/firestore.service';  // Servicio para interactuar con Firestore
+import { Router } from '@angular/router';  // Servicio para manejar la navegación en Angular
+import * as CryptoJS from 'crypto-js';  // Paquete para encriptación
+import Swal from 'sweetalert2';  // Paquete para mostrar alertas personalizadas
 
 @Component({
   selector: 'app-registro',
@@ -17,101 +12,94 @@ import Swal from 'sweetalert2';
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent {
-  // Este "hide" es para el input de contraseña
-  hide = true;
+  hide = true;  // Esta propiedad controla la visibilidad de la contraseña en el formulario de registro
 
-  // IMPORTACIÓN DEL MODELO / INTERFAZ
+  // Inicializamos el objeto 'usuarios' con los campos necesarios para el registro
   usuarios: Usuario = {
-    uid: '',
-    nombre: '',
-    apellido: '',
-    email: '',
-    rol: 'usuario', // -> designamos un rol por defecto para los usuarios que se registren
-    password: ''
+    uid: '',       // UID será asignado después de crear el usuario en Firebase
+    nombre: '',    // Nombre del usuario
+    apellido: '',  // Apellido del usuario
+    email: '',     // Email del usuario
+    rol: 'usuario', // Rol del usuario (por defecto es 'usuario')
+    password: ''   // Contraseña del usuario
   }
 
-  // CREAR UNA COLECCIÓN QUE SOLO RECIBE OBJETOS DEL TIPO USUARIOS
-  coleccionUsuarios: Usuario[] = [];
+  coleccionUsuarios: Usuario[] = [];  // Colección para almacenar usuarios (no utilizada en este componente)
 
-  // Referenciamos a nuestros servicios
+  // Constructor que inyecta los servicios necesarios en el componente
   constructor(
-    public servicioAuth: AuthService, // métodos de autentificación
-    public servicioFirestore: FirestoreService, // vincula UID con la colección
-    public servicioRutas: Router // método de navegación
-  ){}
+    public servicioAuth: AuthService,  // Servicio de autenticación
+    public servicioFirestore: FirestoreService,  // Servicio para interactuar con Firestore
+    public servicioRutas: Router  // Servicio de navegación en Angular
+  ) {}
 
-  // FUNCIÓN ASINCRONICA PARA EL REGISTRO
-  async registrar(){
-    // CREDENCIALES = información que ingrese el usuario
-  
+  // Función asincrónica para registrar al usuario
+  async registrar() {
+    // Obtenemos las credenciales del formulario
     const credenciales = {
-      email: this.usuarios.email,
-      password: this.usuarios.password
+      email: this.usuarios.email,  // Email proporcionado por el usuario
+      password: this.usuarios.password  // Contraseña proporcionada por el usuario
     }
 
-    // constante "res" = resguarda una respuesta
+    // Llamada al servicio de autenticación para registrar al usuario en Firebase
     const res = await this.servicioAuth.registrar(credenciales.email, credenciales.password)
-    // El método THEN nos devuelve la respuesta esperada por la promesa
-    .then(res => {
-      Swal.fire({
-        title: "¡Buen trabajo!",
-        text: "¡Se pudo registrar con éxito! :)",
-        icon: "success"
+      .then(res => {
+        // Si el registro es exitoso, mostramos un mensaje de éxito
+        Swal.fire({
+          title: "¡Buen trabajo!",
+          text: "¡Se pudo registrar con éxito! :)",
+          icon: "success"
+        });
+
+        // Navegamos a la página de inicio después del registro exitoso
+        this.servicioRutas.navigate(['/inicio']);
+      })
+      .catch(error => {
+        // Si ocurre un error, mostramos un mensaje de error
+        Swal.fire({
+          title: "¡Oh no!",
+          text: "Hubo un problema al registrar el nuevo usuario :(",
+          icon: "error"
+        });
       });
 
-      // Accedemos al servicio de rutas -> método navigate
-      // método NAVIGATE = permite dirigirnos a diferentes vistas
-      this.servicioRutas.navigate(['/inicio']);
-    })
-    // El método CATCH toma una falla y la vuelve un ERROR
-    .catch(error => {
-      Swal.fire({
-        title: "¡Oh no!",
-        text: "Hubo un problema al registrar el nuevo usuario :(",
-        icon: "error"
-      });
-    })
-
+    // Obtenemos el UID (identificador único) del usuario desde el servicio de autenticación
     const uid = await this.servicioAuth.obtenerUid();
+    this.usuarios.uid = uid;  // Asignamos el UID al objeto 'usuarios'
 
-    this.usuarios.uid = uid;
-
-    // ENCRIPTACIÓN DE LA CONTRASEÑA DE USUARIO
-    /**
-     * SHA-256: Es un algoritmo de hashing seguro que toma una entrada (en este caso la
-     * contraseña) y produce una cadena de caracteres HEXADECIMAL que representa su HASH
-     * 
-     * toString(): Convierte el resultado del hash en una cadena de caracteres legible
-     */
+    // Encriptamos la contraseña del usuario usando SHA-256 antes de almacenarla en Firestore
     this.usuarios.password = CryptoJS.SHA256(this.usuarios.password).toString();
 
-    // this.guardarUsuario() guardaba la información del usuario en la colección
+    // Llamamos a la función para guardar el usuario en Firestore
     this.guardarUsuario();
 
-    // Llamamos a la función limpiarInputs() para que se ejecute
+    // Limpiamos los campos del formulario después de registrar al usuario
     this.limpiarInputs();
   }
 
-  // función para agregar NUEVO USUARIO
-  async guardarUsuario(){
+  // Función para guardar el usuario en Firestore
+  async guardarUsuario() {
     this.servicioFirestore.agregarUsuario(this.usuarios, this.usuarios.uid)
-    .then(res => {
-      console.log(this.usuarios);
-    })
-    .catch(err => {
-      console.log('Error =>', err);
-    })
+      .then(res => {
+        // Imprimimos en consola los datos del usuario registrado
+        console.log(this.usuarios);
+      })
+      .catch(err => {
+        // Si ocurre un error al guardar, lo mostramos en consola
+        console.log('Error =>', err);
+      })
   }
 
-  // Función para vaciar el formulario
-  limpiarInputs(){
+  // Función para limpiar los campos del formulario
+  limpiarInputs() {
+    // Restablecemos los valores del objeto 'usuarios' a sus valores predeterminados
     const inputs = {
-      uid: this.usuarios.uid = '',
-      nombre: this.usuarios.nombre = '',
-      apellido: this.usuarios.apellido = '',
-      email: this.usuarios.email = '',
-      rol: this.usuarios.rol = 'vis',
-      password: this.usuarios.password = ''
+      uid: this.usuarios.uid = '',  // Limpiamos el UID
+      nombre: this.usuarios.nombre = '',  // Limpiamos el nombre
+      apellido: this.usuarios.apellido = '',  // Limpiamos el apellido
+      email: this.usuarios.email = '',  // Limpiamos el email
+      rol: this.usuarios.rol = 'vis',  // Limpiamos el rol (establecemos un rol por defecto)
+      password: this.usuarios.password = ''  // Limpiamos la contraseña
     }
   }
 }

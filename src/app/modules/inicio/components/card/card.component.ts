@@ -1,82 +1,53 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { Maquillaje } from 'src/app/models/maquillaje';
-import { Producto } from 'src/app/models/producto';
+import { Router } from '@angular/router'; // Importamos el Router para redirigir a otras rutas si es necesario
+import { Maquillaje } from 'src/app/models/maquillaje'; // Importación de modelo de Maquillaje (aunque no se usa en el código actual)
+import { Producto } from 'src/app/models/producto'; // Importación de modelo de Producto
 
 @Component({
-  selector: 'app-card',
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.css']
+  selector: 'app-card', // Selector del componente, usado para llamarlo en el HTML
+  templateUrl: './card.component.html', // Ruta del archivo HTML asociado a este componente
+  styleUrls: ['./card.component.css'] // Ruta del archivo de estilos asociados
 })
 export class CardComponent {
 
-  //     {
-  //       id: "",
-  //       nombre: "Ver Rostro",
-  //       ruta: "",
-  //       imagen: "https://ar.todomoda.com/media/catalog/product/7/6/76555801_0_1_20211202000754.jpg?quality=75&bg-color=255,255,255&fit=bounds&height=841&width=657&canvas=657:841",
-  //       alt: "Rostro",
-  //       categoria: "Rostro",
-  //       tipo: "",
-
-  //     },
-  //     {
-  //       id: "",
-  //       nombre: "Ver Ojos",
-  //       ruta: "",
-  //       imagen: "https://ar.todomoda.com/media/catalog/product/7/6/76363401_0_3_20210811120117.jpg?quality=75&bg-color=255,255,255&fit=bounds&height=841&width=657&canvas=657:841",
-  //       alt: "Ojos",
-  //       categoria: "ojos",
-  //       tipo: "",
-
-  //     },
-  //     {
-  //       id: "",
-  //       nombre: "Ver Uñas",
-  //       ruta: "",
-  //       imagen: "https://ar.todomoda.com/media/catalog/product/7/6/76262585_0_3_20210628181103.jpg?quality=75&bg-color=255,255,255&fit=bounds&height=841&width=657&canvas=657:841",
-  //       alt: "Uñas",
-  //       categoria: "Uñas",
-  //       tipo: "",
-  //     }
-  //   ]
-  // }
-
-  // PROPIEDAD PÚBLICA (TIPO ARRAY)
+  // Propiedad pública tipo array que contiene los productos a mostrar
   public info: Producto[];
 
+  // Objeto detalle para almacenar los datos de un producto específico
   detalle: Producto = {
-    idProducto: '',
-    nombre: '',
-    precio: 0,
-    descripcion: '',
-    categoria: '',
-    imagen: '',
-    alt: '',
-    stock: 0,
-    ruta: ''
+    idProducto: '', // Identificador único del producto
+    nombre: '', // Nombre del producto
+    precio: 0, // Precio del producto
+    descripcion: '', // Descripción del producto
+    categoria: '', // Categoría del producto
+    imagen: '', // URL de la imagen del producto
+    alt: '', // Descripción alternativa de la imagen
+    stock: 0, // Cantidad de productos disponibles
+    ruta: '' // Ruta donde se encuentra el producto
   };
 
+  // Array para almacenar los productos agregados al carrito (aunque no está siendo usado en el código actual)
   coleccionProductosCarrito: Producto[] = [];
 
-
+  // Método para mostrar los detalles de un producto específico
   mostrarProducto(producto: Producto) {
-    this.detalle = producto
+    this.detalle = producto; // Asignamos el producto seleccionado al objeto detalle
   }
 
-
+  // Constructor del componente
   constructor() {
+    // Inicialización de los productos (información ficticia en este caso)
     this.info = [
       {
-        nombre: "Ver Ojos",
-        imagen: "https://ar.todomoda.com/media/catalog/product/7/6/76363401_0_3_20210811120117.jpg?quality=75&bg-color=255,255,255&fit=bounds&height=841&width=657&canvas=657:841",
-        alt: "Un chanchito",
-        idProducto: '',
-        precio: 0,
-        descripcion: '',
-        categoria: 'ojos',
-        stock: 0,
-        ruta: ''
+        nombre: "Ver Ojos", // Nombre del producto
+        imagen: "https://ar.todomoda.com/media/catalog/product/7/6/76363401_0_3_20210811120117.jpg?quality=75&bg-color=255,255,255&fit=bounds&height=841&width=657&canvas=657:841", // URL de la imagen del producto
+        alt: "Un chanchito", // Descripción alternativa de la imagen
+        idProducto: '', // ID vacío (por definir)
+        precio: 0, // Precio vacío (por definir)
+        descripcion: '', // Descripción vacía (por definir)
+        categoria: 'ojos', // Categoría del producto
+        stock: 0, // Stock vacío (por definir)
+        ruta: '' // Ruta vacía (por definir)
       },
       {
         nombre: "Ver Labiales",
@@ -111,7 +82,6 @@ export class CardComponent {
         stock: 0,
         ruta: ''
       }
-
     ]
   }
 }

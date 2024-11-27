@@ -1,86 +1,87 @@
 import { Injectable } from '@angular/core';
-// Servicio de AUTENTIFICACIÓN de FIREBASE
+// Importamos el servicio de AUTENTIFICACIÓN de Firebase
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
-// Servicio de COLECCIONES de FIREBASE
+// Importamos el servicio para manejar COLECCIONES de Firebase Firestore
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
-// Observará los cambios
+// Importamos Observable de RxJS para manejar flujos de datos reactivos
 import { Observable } from 'rxjs';
 
-// Itera la colección leyendo su información actual
+// Importamos el operador 'map' para transformar los datos que se obtienen de Firestore
 import { map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root'  // Este servicio estará disponible en toda la aplicación
 })
 export class AuthService {
-  // Propiedad privada para manejo del rol del usuario
+  // Propiedad privada para manejar el rol del usuario
   private rolUsuario: string | null = null;
 
-  // Referenciar Auth de Firebase para inicializarlo
+  // Constructor donde se inyectan los servicios de autenticación y Firestore
   constructor(
-    private auth: AngularFireAuth,
-    private servicioFirestore: AngularFirestore
+    private auth: AngularFireAuth,  // Servicio de autenticación de Firebase
+    private servicioFirestore: AngularFirestore  // Servicio para interactuar con Firestore
   ) { }
 
-  // Función para REGISTRO
-  registrar(email: string, password: string){
-    // Retorna nueva información de EMAIL y CONTRASEÑA
+  // Función para REGISTRAR un usuario
+  registrar(email: string, password: string) {
+    // Llama al método de Firebase para crear un usuario con email y contraseña
     return this.auth.createUserWithEmailAndPassword(email, password);
   }
 
-  // Función para INICIO DE SESIÓN
-  iniciarSesion(email: string, password: string){
-    // Validar el email y la contraseña
+  // Función para INICIAR SESIÓN
+  iniciarSesion(email: string, password: string) {
+    // Llama al método de Firebase para iniciar sesión con el email y la contraseña
     return this.auth.signInWithEmailAndPassword(email, password);
   }
 
   // Función para CERRAR SESIÓN
-  cerrarSesion(){
-    // Devolver una promesa vacía
+  cerrarSesion() {
+    // Llama al método de Firebase para cerrar la sesión del usuario
     return this.auth.signOut();
   }
 
-  // Función para tomar UID
-  async obtenerUid(){
-    // Nos va a generar una promesa, y la constante la va a capturar
+  // Función para obtener el UID del usuario actual
+  async obtenerUid() {
+    // Obtener la información del usuario actual
     const user = await this.auth.currentUser;
 
     /*
-      Si el usuario no respeta la estructura de la interfaz /
-      Si tuvo problemas para el registro -> ej.: mal internet
+      Si el usuario no está autenticado o hubo un error en la autenticación,
+      se retorna null.
     */
     if(user == null){
       return null;
     } else {
-      return user.uid;
+      return user.uid;  // Si el usuario está autenticado, se retorna su UID
     }
   }
 
-  // Función que busca un usuario en la colección de 'usuarios' cuyo correo electrónico coincida con el valor proporcionado
-  obtenerUsuario(email: string){
+  // Función para buscar un usuario en la colección 'usuarios' de Firestore
+  obtenerUsuario(email: string) {
+    // Busca el documento en Firestore donde el email del usuario coincide con el proporcionado
     return this.servicioFirestore.collection('usuarios', ref => ref.where('email', '==', email)).get().toPromise();
   }
 
-  // FUNCIÓN PARA RECUPERAR ROL DE USUARIO
+  // Función para obtener el rol de un usuario a partir de su UID
   obtenerRol(uid: string): Observable <string | null> {
     /*
-      Retornamos del servicio de Firestore la colección de usuarios, buscando por UID
-      Observamos cambios en valores, mapeamos al documento de 'usuario' e identificamos
-      el atributo de rol (aún si este es nulo)
+      Retorna un observable que se suscribe a los cambios en la colección 'usuarios',
+      buscando por el UID del usuario. Si el usuario tiene un rol, lo devuelve, de lo contrario
+      devuelve null.
     */
     return this.servicioFirestore.collection('usuarios').doc(uid).valueChanges()
-    .pipe(map((usuario: any) => usuario ? usuario.rol : null));
+      .pipe(map((usuario: any) => usuario ? usuario.rol : null));
   }
 
-  // Obtiene el rol de la primera función y lo asigna a la propiedad privada local
-  enviarRolUsuario(rol: string){
+  // Función para almacenar el rol del usuario en la propiedad privada 'rolUsuario'
+  enviarRolUsuario(rol: string) {
     this.rolUsuario = rol;
   }
 
-  // Obtiene el rol y lo retorna (ya sean alfanumericos o nulos)
+  // Función para obtener el rol del usuario desde la propiedad privada 'rolUsuario'
   obtenerRolUsuario(): string | null {
-    return this.rolUsuario;
+    return this.rolUsuario;  // Retorna el rol almacenado o null si no se ha asignado un rol
   }
 }

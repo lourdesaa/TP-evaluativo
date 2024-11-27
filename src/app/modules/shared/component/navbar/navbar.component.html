@@ -1,48 +1,55 @@
 <mat-toolbar>
+  <!-- Botón para menú desplegable en dispositivos móviles -->
   <button id="menuSecciones" mat-icon-button class="example-icon" [matMenuTriggerFor]="secciones">
-    <mat-icon>menu</mat-icon>
+    <mat-icon>menu</mat-icon> <!-- Ícono de menú -->
   </button>
 
+  <!-- Menú desplegable para pantallas móviles -->
   <mat-menu #secciones="matMenu">
-    <!-- Menú desplegable para móviles -->
+    <!-- Enlaces del menú móvil -->
     <button mat-menu-item routerLink="/inicio">Inicio</button>
     <button mat-menu-item routerLink="/contacto">Contacto</button>
     <button mat-menu-item routerLink="/nosotros">Sobre Nosotros</button>
 
+    <!-- Submenú para Maquillaje -->
     <button mat-menu-item [matMenuTriggerFor]="producto" class="nombres">Maquillaje</button>
   </mat-menu>
 
-  <!-- Botón Light Neat -->
+  <!-- Botón para Light Neat en la barra de navegación (pantallas grandes) -->
   <button class="lightneat" id="menuInicio" mat-button routerLink="/inicio">Light Neat</button>
 
-  <!-- Botones visibles en pantallas grandes -->
+  <!-- Botón de menú para Maquillaje (pantallas grandes), despliega submenú -->
   <button id="menuProducto" mat-button [matMenuTriggerFor]="producto">Maquillaje</button>
   <mat-menu #producto="matMenu">
+    <!-- Opciones del submenú para Maquillaje -->
     <button mat-menu-item routerLink="/labiales">Labiales</button>
     <button mat-menu-item routerLink="/ojos">Ojos</button>
     <button mat-menu-item routerLink="/rostro">Rostro</button>
     <button mat-menu-item routerLink="/unas">Uñas</button>
   </mat-menu>
 
-  <!-- Botones de "Contacto" y "Sobre Nosotros" para pantallas grandes -->
+  <!-- Enlaces visibles en pantallas grandes: Contacto y Sobre Nosotros -->
   <div class="navbar-links">
     <button mat-button routerLink="/contacto">Contacto</button>
     <button mat-button routerLink="/nosotros">Sobre Nosotros</button>
   </div>
 
+  <!-- Espaciador entre la navegación y los íconos de usuario y carrito -->
   <span class="example-spacer"></span>
 
-  <!-- Usuario y carrito -->
+  <!-- Botón de usuario (con menú desplegable para iniciar sesión, registrarse o cerrar sesión) -->
   <button mat-icon-button [matMenuTriggerFor]="usuario">
-    <mat-icon>person</mat-icon>
+    <mat-icon>person</mat-icon> <!-- Ícono de usuario -->
   </button>
   <mat-menu #usuario="matMenu">
+    <!-- Menú de opciones para usuario, visible dependiendo de si está logueado o deslogueado -->
     <button mat-menu-item *ngIf="logueado" (click)="iniciar()" routerLink="/registro">Registrarse</button>
     <button mat-menu-item *ngIf="logueado" (click)="iniciar()" routerLink="/inicio-sesion">Iniciar sesión</button>
     <button mat-menu-item *ngIf="deslogueado" (click)="cerrarSesion()">Cerrar sesión</button>
   </mat-menu>
 
+  <!-- Botón de carrito de compras -->
   <button mat-icon-button routerlink="/carrito" class="example-icon favorite-icon" aria-label="Carrito de compras">
-    <mat-icon>shopping_cart</mat-icon>
+    <mat-icon>shopping_cart</mat-icon> <!-- Ícono del carrito -->
   </button>
 </mat-toolbar>

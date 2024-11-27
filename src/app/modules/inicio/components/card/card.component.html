@@ -51,40 +51,72 @@
       </div>
     </div>
   </div>
+</div><!-- Carousel de imágenes -->
+<div id="carouselExample" class="carousel slide">
+  <div class="carousel-inner">
+    <!-- Primera imagen en el carrusel (activa por defecto) -->
+    <div class="carousel-item active" routerLink="/producto">
+      <img src="https://ar.todomoda.com/media/wysiwyg/TMB_SLIDERS_-_wholesome_honey_3_desktop_.jpg"
+        class="d-block w-100" alt="...">
+    </div>
+    <!-- Segunda imagen en el carrusel -->
+    <div class="carousel-item" routerLink="/producto">
+      <img src="https://ar.todomoda.com/media/wysiwyg/TMB_SLIDERS_mentally_on_the_wave_03_desktop__1.jpg"
+        class="d-block w-100" alt="...">
+    </div>
+    <!-- Tercera imagen en el carrusel -->
+    <div class="carousel-item" routerLink="/producto">
+      <img src="https://ar.todomoda.com/media/wysiwyg/TMB_SLIDERS_-_pillow_blush_mobile_.jpg" class="d-block w-100"
+        alt="...">
+    </div>
+    <!-- Cuarta imagen en el carrusel -->
+    <div class="carousel-item" routerLink="/producto">
+      <img src="https://ar.todomoda.com/media/wysiwyg/TMB_SLIDERS_emily_desktop_.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  
+  <!-- Botón de control para ir a la imagen anterior -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  
+  <!-- Botón de control para ir a la siguiente imagen -->
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
 </div>
-<!-- 
+
+<!-- Sección con tarjetas de productos -->
 <div class="container">
   <div class="row">
-    <h2>elementos destacados:</h2>
-
-    <div class="col">
-      <div *ngFor="let i of info" class="contenido col-lg-3 col-6">
-
-        <mat-card class="example-card card">
-
-          <mat-card-header>
-
-            <mat-card-title>{{i.nombre}}</mat-card-title>
-
-          </mat-card-header>
-
-          <img mat-card-image src="{{i.imagen}}" alt="{{i.alt}}" class="img-card">
-          <mat-card-content>
-            <p>
-            </p>
-          </mat-card-content>
-          <mat-card-actions>
-            Botón "Ver más" 
-            <button type="button" class="btn1 btn-primary" data-bs-target="#exampleModal">
-              Ver info
-            </button>
-             Botón "Ver más" 
-            <button type="button" class="btn1 btn-primary" routerLink="/{{i.categoria}}">
-              ver seccion
-            </button>
-          </mat-card-actions>
-        </mat-card>
+    <!-- Uso de *ngFor para iterar sobre un array 'info' y mostrar una tarjeta por cada elemento -->
+    <div *ngFor="let i of info" class="col-lg-3 col-6">
+      <div class="card-container">
+        <div class="contenido">
+          <mat-card class="card">
+            <mat-card-header>
+              <!-- Título de la tarjeta -->
+              <mat-card-title></mat-card-title>
+            </mat-card-header>
+            
+            <!-- Imagen de la tarjeta -->
+            <img class="card-img" mat-card-image src="{{i.imagen}}" alt="{{i.alt}}">
+            
+            <mat-card-actions>
+              <!-- Botón que redirige a una página de categoría específica -->
+              <button class="btn-arrow" routerLink="/{{i.categoria}}">
+                {{i.nombre}} <span>&rarr;</span>
+              </button>
+              <!-- Botón "Ver más" que también redirige a la sección del producto -->
+              <button type="button" class="btn1 btn-primary" routerLink="/{{i.categoria}}">
+                ver seccion
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
       </div>
     </div>
   </div>
-</div> -->
+</div>
