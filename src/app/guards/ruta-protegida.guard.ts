@@ -8,10 +8,7 @@ import { Router } from '@angular/router';
 // Operadores de tipo OBSERVABLES de RxJS
 import { map, switchMap, of, from } from 'rxjs';
 
-/**
- * Guardián de rutas protegidas basado en roles.
- * Este guardián verifica si el usuario tiene permisos de acceso al recurso, dependiendo de su rol.
- * 
+/*
  * @param route - La ruta solicitada por el usuario.
  * @param state - El estado actual del router.
  * @returns Un observable que indica si el acceso está permitido o si se redirige al usuario.
@@ -23,7 +20,6 @@ export const rutaProtegidaGuard: CanActivateFn = (route, state) => {
   // Inyectamos el servicio de navegación (Router)
   const servicioRutas = inject(Router);
 
-  // Especificamos el rol esperado para esta ruta
   const rolEsperado = "admin";
 
   return from(servicioAuth.obtenerUid()).pipe(
@@ -44,7 +40,7 @@ export const rutaProtegidaGuard: CanActivateFn = (route, state) => {
           })
         );
       } else {
-        // Si no hay UID (usuario no autenticado o visitante), redirigimos a la página de inicio
+        // Si no hay UID, redirigimos a la página de inicio
         console.log("Usuario no validado. Permisos insuficientes.");
         return of(servicioRutas.createUrlTree(["/inicio"]));
       }

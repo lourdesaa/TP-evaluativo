@@ -10,13 +10,11 @@ import Swal from 'sweetalert2';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent {
-  // **coleccionProductos**: Arreglo de productos del tipo `Producto` para almacenar la información de productos.
+  // Arreglo de productos del tipo `Producto`
   coleccionProductos: Producto[] = [];
 
-  // **modalVisibleProducto**: Booleano para controlar la visibilidad de los modales de edición y eliminación de productos.
   modalVisibleProducto: boolean = false;
 
-  // **productoSeleccionado**: Producto seleccionado para editar o eliminar.
   productoSeleccionado!: Producto;
 
   // **nombreImagen**: Contiene el nombre de la imagen del producto.

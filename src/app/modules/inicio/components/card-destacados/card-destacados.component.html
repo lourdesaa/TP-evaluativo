@@ -20,7 +20,7 @@
           <!-- Acciones de la tarjeta, por ejemplo, un botón para ver más detalles -->
           <mat-card-actions>
             <!-- Botón que al hacer clic llama a la función 'mostrarVer' pasando el producto 'i' -->
-            <button class="btn-arrow" (click)="mostrarVer(i)">
+            <button class="btn-arrow" data-bs-toggle="modal" data-bs-target="#modalCard" (click)="mostrarVer(i)">
               {{i.categoria}} <span>&rarr;</span>
             </button>
           </mat-card-actions>
@@ -62,7 +62,7 @@
           <!-- Pie del modal con los botones de acción -->
           <div class="modal-footer">
               <!-- Botón para agregar al carrito (aún no implementado) -->
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Agregar al carrito</button>
+              <button type="button" class="btn" data-bs-dismiss="modal">Agregar al carrito</button>
               <!-- Botón para cerrar el modal -->
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
           </div>
